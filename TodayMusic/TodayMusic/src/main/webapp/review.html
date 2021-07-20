@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>추천곡 쓰기 | 오늘뭐듣지?</title>
+
+<script type="text/javascript" src="js/js_review_sunghyun.js"></script>
+<script type="text/javascript">
+
+function writeLengthCheck(takeData) {
+	var writeLengthElement = document.getElementById("writeLength");
+	writeLengthElement.innerHTML = takeData.length;
+	}
+
+function createDiv() {
+	 var textarea = document.getElementById('write').value;
+	 const newDiv = document.createElement('div');
+	  
+	 const newText = document.createTextNode(textarea);
+	 newDiv.appendChild(newText);
+	 document.body.appendChild(newDiv);
+	} 
+
+
+</script>
+
+<link type="text/css" rel="stylesheet" href="css/css_sunghyun.css">
+
+
+</head>
+<body>
+<br>
+<div align="center" class="comment">
+취향이 맞는 유저들끼리 더 많은 곡을 추천해요!
+</div>
+<br>
+			<span class="input_1"></span><br>
+			<span> 
+				<textarea cols="60" rows="5" name="write" id="write" maxlength="100" onkeyup="writeLengthCheck(this.value)"></textarea>
+			</span>
+				<div id="writeLength" class="writeLength">100자까지 입력 가능합니다.</div>
+				<div class="btn_review" align="center">
+					<input type="submit" value="작성" onclick="createDiv()">
+					<input type="reset" value="취소" onclick="window.close()">
+				</div>
+				</div>
+		
+
+
+
+</body>
+</html>

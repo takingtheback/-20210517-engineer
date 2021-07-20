@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>음악 키워드 검색 | 오늘뭐듣지?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+ 	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+ 
+ 	<link type="text/css" rel="stylesheet" href="css/juri_music_search.css">
+ 	<script type="text/javascript" src="js/juri_music_search.js"></script>
+ 
+ 
+</head>
+<body>
+	<header>
+		  <h1>Today Music</h1>
+		  <nav class="menu">
+		    <span><a href="index.html" style="text-decoration: none; color:white;">로그아웃  |</a></span>
+		      <span><a href="music_now.html" style="text-decoration: none; color:white;">지금 뭐 듣지?  |</a></span>
+		    <span><a href="mypage.html" style="text-decoration: none; color:white;">마이페이지  |</a></span>
+		  </nav>
+		</header>
+		
+      <section>
+			
+        <div id="first">
+            <h2>음악 키워드 검색 <br>
+            </h2>
+            <h4 style="padding-left: 5%; font-family: 'Noto Serif KR', serif;">듣고 싶은 음악의 키워드를 검색해보세요!</h4>
+
+            <hr>
+
+                <form name="form1" method="post" onsubmit="return false;">
+            
+                    <input type="text" id="search_box" placeholder="검색어를 입력해주세요.">
+                    <button id="search_btn" onclick="fnGetList();">검색</button>
+            
+                </form>
+ 
+                <div id="get_view"></div>
+            
+                <div id="nav_view"></div>
+         </div>
+         </section>
+</body>
+</html>

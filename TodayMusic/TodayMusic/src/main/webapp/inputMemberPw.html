@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>비밀번호찾기|오늘뭐듣지?</title>
+    <link type="text/css" rel="stylesheet" href="css/css_JHK.css">
+    <script type="text/javascript">
+    window.onload = function() {
+		initForm();
+	}
+	
+	/* 폼 초기화 함수 */
+	function initForm() {
+		document.getElementById("memberPw").focus();
+	}
+	
+	function checkForm() {
+		var memberPw = document.getElementById("memberPw").value;
+		var memberPwConfirm = document.getElementById("memberPwConfirm").value;
+		
+		// 비밀번호와 비밀번호확인 매칭 검증
+		if (memberPw != memberPwConfirm) {
+			document.getElementById("memberPw").focus();
+			document.getElementById("memberPwMsg").innerHTML = "입력하신 두 비밀번호가 일치하지 않습니다.";
+			
+			return false; 
+		}
+    }
+    </script>
+</head>
+    
+<body class="findPw-Page">
+ <section class="findMemberPw-form">
+        <h1>새비밀번호입력</h1>
+        <h3 id="memberPwMsg"></h3>
+        <form action="InputMemberPwResult.html" method="post">
+            <div class="int-area">
+            <input type="password" name="memberPw" id="memberPw"
+                   placeholder=" 새 비밀번호 " autocomplete="off" required>
+                   
+          
+            <h4 id="CapsLockCheck"></h4> 
+            </div>
+            <div class="int-area">
+             <input type="password" name="memberPwConfirm" id="memberPwConfirm"
+                    placeholder=" 비밀번호 재입력 " autocomplete="off" required>
+                    
+               
+            </div>
+            <div class="btn-area">
+            <button type="submit" onclick="return checkForm();">확인</button>
+            </div>
+            </form>
+            
+            <script type="text/javascript">
+        	// Get the input field
+        	var input = document.getElementById("memberPw");
+
+        	// Get the warning text
+        	var text = document.getElementById("CapsLockCheck");
+
+        	// When the user presses any key on the keyboard, run the function
+        	input.addEventListener("keyup", function(event) {
+
+        	  // If "caps lock" is pressed, display the warning text
+        	  if (event.getModifierState("CapsLock")) {
+        		  document.getElementById("CapsLockCheck").innerHTML = "CapsLock On";
+        	  } else {
+        		  document.getElementById("CapsLockCheck").innerHTML = "";
+        	  }
+        	});
+        	</script>
+        </section>
+</body>
+</html>

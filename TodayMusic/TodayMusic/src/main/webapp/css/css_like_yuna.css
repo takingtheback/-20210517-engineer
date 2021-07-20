@@ -1,0 +1,172 @@
+@charset "UTF-8";
+
+.likeListdiv {
+	width: 100%;
+	border-top: 1px solid #e0e0e0;
+	float: left;
+	font-size: 0.9375em;
+	margin-bottom: 20px;
+}
+
+.likeListdiv .row.head {
+	border-bottom: 2px solid #888;
+	box-sizing: border-box;
+	background-color: #f4f4f4;
+	font-weight: 500;
+}
+
+.likeListdiv .data {
+	border-bottom: 1px dashed #888;
+	box-sizing: border-box;
+	cursor: pointer;
+	float: left;
+	width: 100%;
+}
+
+.likeListdiv .data .empty {
+	text-align: center;
+	padding: 12px 0;
+}
+
+.likeListdiv .row.head .subdiv {
+	background-color: #f4f4f4;
+}
+
+.likeListdiv .row>.subdiv {
+	display: block;
+	float: left;
+}
+
+.likeListdiv .row>.subdiv:nth-child(1) {
+	width: 100%;
+}
+
+.likeListdiv .row>div>div {
+	display: block;
+	float: left;
+	text-align: center;
+	margin: 0;
+	padding: 12px 0;
+}
+
+.likeListdiv .row.data>div>div {
+	height: 80px;
+	line-height: 60px;
+}
+
+.likeListdiv .check {
+	width: 10%;
+}
+
+.likeListdiv .check input[type=checkbox] {
+	transform: scale(1.5);
+}
+
+.likeListdiv .img {
+	width: 20%;
+}
+
+.likeListdiv .songTitle {
+	width: 30%;
+}
+
+.likeListdiv .singer {
+	width: 30%;
+}
+
+.likeListdiv .likeListcmd {
+	width: 10%;
+}
+
+.likeListdiv .data .pname {
+	text-align: left !important;
+	line-height: 1.2 !important;
+}
+
+.likeListdiv .data .singer {
+	text-align: center;
+}
+
+.buttongroup {
+	padding: 11px 0;
+	margin: 50px 0;
+}
+
+.narrowbuttongroup {
+	margin: 15px 0;
+}
+
+.buttongroup.center {
+	text-align: center;
+}
+
+.buttongroup input[type=text], .buttongroup input[type=password] {
+	height: 30px;
+}
+
+.buttongroup button, .buttongroup a {
+	margin-right: 5px;
+}
+
+.buttongroup button:last-child, .buttongroup a:last-child {
+	margin-right: 0;
+}
+
+.abutton, .abutton:link, .abutton:visited, .abutton:active, input[type=button]
+	{
+	background-color: #6495ED;
+	border: 1px solid #888888;
+	color: #FAEBD7;
+	cursor: pointer;
+	letter-spacing: -1px;
+	padding: 3px 5px;
+	margin: 2px 3px;
+	width: auto;
+	word-break: keep-all;
+	border-radius: 5px;
+	text-decoration: none;
+	font-size: 0.9375em;
+}
+
+.abutton-alt {
+	background-color: #d3e2c6;
+}
+
+.likeListrowcmd {
+	text-align: right;
+	margin-bottom: 10px;
+}
+
+.buttongroup{
+  text-align: center;
+}
+
+.buttongroup a{
+  text-decoration: none;
+}
+
+.cmd a, .cmd span {
+    padding: 12px 30px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: #000;
+    background-color: #f4f4f4;
+    border: 1px solid #e0e0e0;
+    text-align: center;
+}
+
+.cmd.small a, .cmd.small span {
+    padding: 6px 20px;
+    font-size: 0.8125em;
+}
+
+.playListForm .p_num {
+    text-align: right;
+    width: 40px;
+    font-size: 1em;
+    margin-top: 75px;
+}
+
+
+
