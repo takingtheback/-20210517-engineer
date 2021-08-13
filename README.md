@@ -57,7 +57,7 @@
    - 시도코드표를 geo파일로 변환하지 못해 지도를 통한 heatmap 분석을 사용하지 못함
 
 # 5번째 SpringBoot 중간프로젝트
-  - 스프링부트를 이용한 Web Service 프로젝트
+  - 스프링부트를 이용한 Web Service 5인 팀프로젝트 :  https://github.com/PD-team2/SpringProject
   - 담당영역
     >> Front : MyPage,FaQ, MainPage, Chat, ContactMail, QnA
   - 담당기능
