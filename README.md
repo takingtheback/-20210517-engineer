@@ -46,8 +46,17 @@
     - 비밀번호 변경 후 자식창이 닫히고 로그인창으로 변경되도록 설계하였으나 마지막 실행시 작동안됨
     - 프로젝트 마감까지 충분한 시간이 남았음에도 다른 기능 구현 생각 안함
 
+# 4번째 Elasticsearch 이용한 건강검진기록 dashboard 제작
+   - 사용기능
+   >> Elasticsearch, logstash,filebeat, kibana
+   - https://www.data.go.kr/ 공공데이터포털에서 국민건강보험공단의 40세 이상 50만명분의 데이터를 조합
+   - 신장, 혈압, 혈당, 콜레스테롤 등 건강지표에 관련된 통계 추출
+   
+   - 보안점
+   - 데이터 100mb 제한으로 인한 100만명분의 데이터를 활용하지 못함
+   - 시도코드표를 geo파일로 변환하지 못해 지도를 통한 heatmap 분석을 사용하지 못함
 
-# 4번째 SpringBoot 중간프로젝트
+# 5번째 SpringBoot 중간프로젝트
   - 스프링부트를 이용한 Web Service 프로젝트
   - 담당영역
     >> Front : MyPage,FaQ, MainPage, Chat, ContactMail, QnA
