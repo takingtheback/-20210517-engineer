@@ -1,0 +1,158 @@
+@charset "UTF-8";
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+.FAQForm {
+    position: relative;
+    width: 1086px;
+    height: 626px;
+    margin: auto;
+    margin-top: 157px;
+}
+.FAQ_title {
+    font-family:'Pretendard'; 
+    font-size: 40px;
+    margin-left: 24px;
+    margin-right: -4px;
+    
+}
+.FAQ_explain {
+    font-family:'Pretendard'; 
+    font-size: 18px;
+    margin-top: 24px;
+    margin-left: 24px;
+    margin-bottom: 42px;
+    color: #8A8A8A;
+}
+input[id*="answer"] {
+	display: none;
+    margin:auto;
+}
+
+input[id*="answer"] + label {
+    font-family:'Pretendard'; 
+    margin-bottom: 8px;
+	display: block;
+	padding: 16px;
+	width:1083px;
+    
+	border:1px solid #E0E0E0;
+    border-radius: 8px;
+    	
+	color:#353535;
+	font-size:20px;
+	background:#ffffff;
+	cursor:pointer;
+	position: relative;
+}
+
+input[id*="answer"] + label em {
+	position:absolute;
+	top:50%;
+	right:10px;
+	width:30px;
+	height:30px;
+	margin-top:-15px;
+	display:inline-block;
+	background:url('https://raw.githubusercontent.com/PD-team2/SpringProject_Output/main/JaeHyunKim/IMG/chevron-down.png') 0 0 no-repeat;
+}
+
+input[id*="answer"] + label + div {
+    font-family:'Pretendard'; 
+	max-height: 0;
+    margin-top:-8px;
+    margin-left:5px;
+    margin-bottom:8px;
+	transition: all .35s;
+	overflow: hidden;
+	display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    border-radius: 8px;
+    padding: 0 23px;
+    width: 1069px;
+    height: 320px;
+    font-size:18px;
+    background-color: #E5E5E5;
+
+}
+
+input[id*="answer"] + label + div p {
+	display: inline-block;
+	text-align: left;
+}
+
+input[id*="answer"]:checked + label + div {
+	max-height:100px;	
+}
+
+input[id*="answer"]:checked + label em {
+	background:url('https://raw.githubusercontent.com/PD-team2/SpringProject_Output/main/JaeHyunKim/IMG/chevron-up.png') 0 0 no-repeat;
+}
+
+.footer {
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    left: 0px;
+    top: 680px;
+    background: #F6F6F6;
+}
+
+.footerMenuForm {
+    margin: auto;
+    text-align:left;
+    width: 1154px;
+    height: 234px;
+    left: 417px;
+    top: 948px;  
+}
+
+.footerMenu {
+    display: inline-block;
+    margin-left: 20px;
+    width: 544px;
+    height: 190px;
+    top: 948px;
+    
+}
+
+.footerTitle {
+    font-family:'Pretendard'; 
+    font-size: 20px;
+    margin-top: 42px;
+    margin-left: 18px;
+    margin-bottom: 20px;  
+}
+
+.footerExplain {
+    font-family:'Pretendard'; 
+    font-size: 18px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    color: #7C7B7B;  
+}
+
+.footerExplain2 {
+    font-family:'Pretendard'; 
+    font-size: 16px;
+    margin-left: 20px;
+    color: #7C7B7B;
+    
+    
+}
+
+.footerButton {
+    position: relative;
+    left: 365px;
+    bottom: 50px;
+    font-family:'Pretendard'; 
+    font-size: 16px;
+    justify-content: center;
+    align-items: center;  
+    width: 157px;
+    height: 51px;
+    background: #FFFFFF;
+    border: 1px solid #636363;
+    box-sizing: border-box;
+    border-radius: 8px;
+}

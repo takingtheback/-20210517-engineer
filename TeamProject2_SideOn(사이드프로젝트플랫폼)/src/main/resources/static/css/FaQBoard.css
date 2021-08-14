@@ -1,0 +1,55 @@
+@charset "UTF-8";
+input[id*="answer"] {
+	display: none;
+	
+}
+
+input[id*="answer"] + label {
+	display: block;
+	padding: 20px;
+	
+	border:1px solid #FFE87C;
+	border-bottom:10px;
+	color:#fff;
+	font-weight:900;
+	background:#3D3D3D;
+	cursor:pointer;
+	position: relative;
+}
+
+input[id*="answer"] + label em {
+	position:absolute;
+	
+	top:50%;
+	right:10px;
+	width:30px;
+	height:30px;
+	margin-top:-15px;
+	display:inline-block;
+	background:url('https://raw.githubusercontent.com/PD-team2/SpringProject_Output/main/JaeHyunKim/IMG/arrow.png') 0 0 no-repeat;
+}
+
+input[id*="answer"] + label + div {
+	height:auto;
+	max-height: 0;
+	transition: all .35s;
+	overflow: hidden;
+	
+	
+	background: #F5F5F5;
+	font-size:12px;
+}
+
+input[id*="answer"] + label + div p {
+	display: inline-block;
+	padding: 5px;
+	margin: 5px;
+}
+
+input[id*="answer"]:checked + label + div {
+	max-height:100px;	
+}
+
+input[id*="answer"]:checked + label em {
+	background-position:0 -30px;	
+}

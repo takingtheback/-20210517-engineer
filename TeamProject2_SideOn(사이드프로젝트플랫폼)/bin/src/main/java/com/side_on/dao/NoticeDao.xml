@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.side_on.dao.NoticeDao">
+	
+	<!-- public List<Notice> selectNoticeList() -->
+	<select id="selectNoticeList" resultType="com.side_on.dto.Notice">
+		select * from notice where visible_check='F' order by notice_no
+	</select>
+	
+	<select id="selectNotice" resultType="com.side_on.dto.Notice" parameterType="String">
+		select * from notice where notice_no=#{noticeNo}
+	</select>
+
+</mapper>

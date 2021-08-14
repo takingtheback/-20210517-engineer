@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.side_on.dao.NoticeDao">
+	
+	<!-- public List<Notice> selectDashboardNoticeList() -->
+	<select id="selectDashboardNoticeList" resultType="com.side_on.dto.Notice">
+		SELECT *
+		FROM (
+			select * 
+			from notice 
+			where visible_check='F'
+			order by to_number(notice_no) desc
+			)
+		<![CDATA[WHERE ROWNUM <= 3]]>
+	</select>
+	
+	<!-- public List<Notice> selectNoticeList() -->
+	<select id="selectNoticeList" resultType="com.side_on.dto.Notice">
+		select * from notice where visible_check='F' order by to_number(notice_no) desc
+	</select>
+	
+	<select id="selectNotice" resultType="com.side_on.dto.Notice" parameterType="String">
+		select * from notice where notice_no=#{noticeNo}
+	</select>
+
+	<insert id="insertNotice" parameterType="com.side_on.dto.Notice">
+		insert into NOTICE
+		(notice_no, notice_Title, notice_content, member_id, notice_Date, view_Count, visible_check) 
+		values
+		(SEQ_NOTICE.nextval, #{noticeTitle}, #{noticeContent}, 'admin1', #{noticeDate}, '0', 'F')
+	</insert>
+	
+	<!-- public List<Notice> selectAdminNoticeList() -->
+	<select id="selectAdminNoticeList" resultType="com.side_on.dto.Notice">
+		select * from notice where visible_check='F' order by to_number(notice_no) desc
+	</select>
+	
+	<!-- public Notice selectAdminNotice(String noticeNo) -->
+	<select id="selectAdminNotice" resultType="com.side_on.dto.Notice" parameterType="String">
+		select * from notice where notice_no=#{noticeNo}
+	</select>
+
+</mapper>

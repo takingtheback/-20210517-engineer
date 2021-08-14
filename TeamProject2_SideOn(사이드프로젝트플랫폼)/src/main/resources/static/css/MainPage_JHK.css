@@ -1,0 +1,68 @@
+@charset "UTF-8";
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+.SideOnExplainImg{
+    width: 1145px;
+    height: 564px;
+}
+.serviceImg{
+    width: 130px;
+    height: 130px;
+}
+
+.service-section {
+    background: #FAFAFA;
+}
+.logoLocation {
+    position: absolute;
+    top: 600px;
+    right:100px;
+    
+}
+.JoinButton {
+    position: absolute;
+    text-decoration:none;
+    font-family: Pretendard;
+    color: #FFFFFF;
+    width: 190px;
+    height: 60px;
+    left: 327px;
+    top: 500px;
+    left: 600px;
+    padding-top: 5px;
+    font-size: 30px;
+    text-align: center;
+    background: #FFC800;
+    border-radius: 15px;    
+}
+
+.head-subheading {
+    position: absolute;
+    width: 1174px;
+    height: 112px;
+    left: 80px;
+    top: 200px;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 80px;
+    line-height: 96px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+}
+
+.head-subheading2 {
+    position: absolute;
+    width: 1087px;
+    height: 89px;
+    left: 80px;
+    top: 330px;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 80px;
+    line-height: 96px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+}

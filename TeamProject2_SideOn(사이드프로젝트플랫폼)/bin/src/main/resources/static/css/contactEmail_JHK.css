@@ -1,0 +1,108 @@
+@charset "UTF-8";
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+.ChatForm {
+    position: relative;
+    width: 1177px;
+    height: 150px;
+    margin: auto;
+    margin-top: 120px;
+   
+    
+}
+
+.Chat_title {
+    font-family:'Pretendard'; 
+    font-size: 36px;
+    margin-left: 24px;
+    margin-right: -4px;
+    
+}
+
+.Chat_title img {
+    width: 40px;
+    height: 40px;
+}
+
+.Chat_explain {
+    font-family:'Pretendard'; 
+    font-size: 18px;
+    margin-top: 24px;
+    margin-left: 24px;
+    margin-bottom: 20px;
+    color: #8A8A8A;
+}
+
+hr {
+    width: 1177px;
+    border: 1px solid #DDDDDD;
+    margin-bottom: 20px;
+}
+
+.int-area {
+    margin-bottom: 10px;
+    margin: auto;
+    width: 1184px;
+    height: 80px;  
+}
+
+.mailForm {
+    padding-left: 37px;
+    width: 1184px;
+    height: 60px;
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    border-radius: 8px;
+    
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    font-family:'Pretendard'; 
+    font-size: 18px;
+    color: #BBBBBB;
+    opacity: 1; /* Firefox */
+}
+
+.text-area {
+    width: 1184px;
+    height: 398px;
+    margin: auto;
+    background: #F6F6F6; 
+}
+
+textarea {
+    font-family:'Pretendard'; 
+    font-size: 18px;
+    width: 1184px;
+    height: 398px;
+    padding: 37px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background: #F6F6F6;
+    font-size: 16px;
+    resize: both;
+    color:#585858;
+    resize: none;
+    border: 0px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.btn-area {
+    position: relative;
+    margin-top: 10px;
+    margin: auto;
+    text-align: center;
+    width: 1184px;
+}
+
+.button {
+    position: relative;
+    margin-top: 20px;
+    background-color:#595959;
+    color:#FFF6F6;
+    font-size:18px;
+    width: 250px;
+    height: 56px;
+    border-radius: 8px;  
+}

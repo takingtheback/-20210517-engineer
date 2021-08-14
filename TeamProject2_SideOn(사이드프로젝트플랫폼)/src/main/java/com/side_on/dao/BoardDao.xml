@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.side_on.dao.BoardDao">
+
+ 	<!--게시판 조회 public List<Board> selectQnABoardList() -->
+	<select id="selectQnABoardList" resultType="com.side_on.dto.QnABoard">
+		select * from QnABoard
+	</select>
+	
+	<!-- 게시글 본문 조회 public QnABoard selectQnABoardDetail(int qnaBoardNo); -->
+	<select id="selectQnABoardDetail"  parameterType="map" resultType="com.side_on.dto.QnABoard">
+		select * from QnABoard where QNABOARD_NO=#{qnaBoardNo}
+	</select>
+	
+	<!-- 게시물 작성 public int insertQnABoard(QnABoard dto) -->
+	<insert id="insertQnABoard" parameterType="com.side_on.dto.QnABoard">
+		insert into QNABOARD
+		values(SEQ_QNABOARD.nextval, #{qnaBoardTitle}, #{qnaBoardContents}, #{memberId}, #{qnaBoardDate}, #{qnaBoardViews})
+	</insert>
+	
+	<!-- 게시판 목록(페이징 적용)  public List<QnABoard> getListPaging(Criteria cri) -->
+	<select id="getListPaging" resultType="com.side_on.dto.QnABoard">
+    
+    <![CDATA[
+		select rn,QNABOARD_NO, QNABOARD_TITLE,	QNABOARD_CONTENTS, MEMBER_ID, QNABOARD_DATE, QNABOARD_VIEWS from (
+		select /*+INDEX_DESC(QnABoard pk_board) */ rownum as rn,QNABOARD_NO, QNABOARD_TITLE, QNABOARD_CONTENTS, MEMBER_ID, QNABOARD_DATE, QNABOARD_VIEWS
+		from QnABoard where rownum <= #{pageNum} * #{amount}
+    ]]>
+	<if test="keyword != null">
+                    <include refid="criteria"></include> 
+                </if>
+    <![CDATA[
+                )
+        where rn > (#{pageNum} -1) * #{amount}
+    ]]>	    
+    </select>
+    
+ 	<!-- 게시물 총 갯수  public int getTotal(Criteria cri) -->
+    <select id="getTotal" resultType="int">
+        select count(*) from QNABOARD
+    <if test="keyword != null">
+		where QNABOARD_NO > 0 <include refid="criteria"></include>
+	</if>    
+    </select>
+    
+    <!-- 문의글 수정 	public int updateQnABoard(QnABoard dto) -->
+    <insert id="updateQnABoard" parameterType="com.side_on.dto.QnABoard">
+        UPDATE QNABOARD
+		SET
+			QNABOARD_TITLE = #{qnaBoardTitle}, 
+			QNABOARD_CONTENTS = #{qnaBoardContents},
+			QNABOARD_DATE = #{qnaBoardDate}
+		WHERE
+			QNABOARD_NO= #{qnaBoardNo}
+    </insert>
+    
+    <!-- 문의글 삭제 public QnABoard deleteQnABoardList(int qnaBoardNo) --> 
+    <delete id="deleteQnABoardList">
+		delete from QNABOARD WHERE QNABOARD_NO= #{qnaBoardNo}
+	</delete>
+  	
+  	<!-- 검색 조건문 -->
+	<sql id="criteria">
+		<trim prefix="AND (" suffix=")" prefixOverrides="OR">
+			<foreach collection="typeArr" item="type">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'T'.toString()">
+							QNABOARD_TITLE like '%'||#{keyword}||'%' 
+						</when>
+						<when test="type == 'C'.toString()">
+							QNABOARD_CONTENTS like '%'||#{keyword}||'%' 
+						</when>
+						<when test="type == 'W'.toString()">
+							MEMBER_ID like '%'||#{keyword}||'%' 
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	
+	</sql>
+	
+	<!-- 문의글 조회수 증가	public Object updateQnABoardViews(int qnaBoardNo) -->
+	<insert id="updateQnABoardViews" parameterType="com.side_on.dto.QnABoard">
+		UPDATE 
+		    QNABOARD
+		SET
+		    QNABOARD_VIEWS = QNABOARD_VIEWS + 1
+		WHERE
+		    QNABOARD_NO= #{qnaBoardNo}
+    </insert>
+	
+	
+</mapper>

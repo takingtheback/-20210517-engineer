@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.side_on.dao.RestDao">
+	
+	<!-- public List<Rest> selectRestList() -->
+	<select id="selectRestList" resultType="com.side_on.dto.Rest">
+		select * from rest order by rest_no
+	</select>
+	
+	<!-- public Rest selectRest(String restNo) -->
+	<select id="selectRest" resultType="com.side_on.dto.Rest" parameterType="String">
+		select * from rest where rest_no=#{restNo}
+	</select>
+
+</mapper>

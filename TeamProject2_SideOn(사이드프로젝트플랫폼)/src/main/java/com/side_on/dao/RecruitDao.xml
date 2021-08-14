@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.side_on.dao.RecruitDao">
+
+		<resultMap type="com.side_on.dto.RecruitBoard" id="recruitList">
+		        <result property="recruit_num" column="Recruit_num"/>
+		         <result property="memberId" column="memberId"/>
+		         <result property="hit" column="hit"/>
+		          <result property="start_date" column="start_date"/>
+		           <result property="end_date" column="end_date"/>
+		            <result property="title" column="title"/>
+		             <result property="content" column="content"/>
+		              <result property="save_date" column="save_date"/>
+		               <result property="pay_check" column="pay_check"/>
+		                <result property="pay_amount" column="pay_amount"/>
+		                 <result property="visible_check" column="visible_check"/>
+		                  <result property="simple_info" column="simple_info"/>
+		                   <result property="pj_content" column="pj_content"/>
+		                    <result property="project_name" column="project_name"/>
+		                     <result property="Front" column="front"/>
+		                      <result property="Back" column="back"/>
+		                       <result property="aos" column="aos"/>
+		                        <result property="ios" column="ios"/>  
+		                        <result property="uxui" column="uxui"/>
+		                         <result property="plan" column="plan"/>
+		                         <result property="pm" column="pm"/>
+		                         <result property="server" column="server"/>
+				</resultMap>
+
+ 	<!--1. 모집 게시글 등록하기-->
+	<insert id="insertRecruitBoard" parameterType="com.side_on.dto.RecruitBoard">
+		insert into Recruit
+		values(Recruit_SEQ.nextval, #{memberId}, #{hit}, #{start_date}, #{end_date}, #{title}, #{content},
+		#{save_date}, #{pay_check}, #{pay_amount}, #{visible_check}, #{simple_info}, #{pj_content},
+		#{project_name}, #{Front}, #{Back}, #{aos}, #{ios}, #{uxui}, #{plan}, #{pm})
+	</insert>
+		<!-- 게시판 목록(페이징 적용)  public List<QnABoard> getListPaging(Criteria cri) -->
+	<select id="getListPaging" resultType="com.side_on.dto.RecruitBoard">
+    
+    <![CDATA[
+		select rn,recruit_num, memberId, hit, start_date, end_date, title, Content, save_date, pay_check, pay_amount, visible_check, simple_info, project_name, Front, Back, aos, ios, uxui, plan, pm
+     	from (
+				select 
+				rownum as rn,Recruit_num, memberId, hit, start_date, end_date, title, Content, save_date, pay_check, pay_amount, visible_check, 
+				simple_info, project_name, Front, Back, aos, ios, uxui, plan, pm 
+				from Recruit 
+				where rownum <= #{pageNum}  * #{amount})  order by rn desc
+    ]]>	    
+    </select>
+    
+ 	<!-- 게시물 총 갯수  public int getTotal(Criteria cri) -->
+    <select id="allCount" resultType="int">
+        select count(*) from recruit
+    </select>
+    
+
+		<!--2. 게시글 총 갯수 -->
+   <select id="memberAll" resultMap="recruitList">
+        select recruit_num, memberId, title from recruit
+    </select>
+	
+	<!-- 3. 상세 게시글 조회 -->
+	<select id="memberDetail" resultMap="recruitList">
+        select * from recruit where recruit_num = #{recruit_num}
+    </select>
+	
+</mapper>
