@@ -1,6 +1,6 @@
 # -20210517-20211105 BigData engineer Process
    
-# 1번째 자바 미니프로젝트 - 회원관리(Java)
+# 1번째 미니프로젝트 - 회원관리CRUD (Java)
   - 기능 : 자바 기능을 활용하여 CRUD 항목을 수행할 수 있도록 제작
   - 장점
     - 짧은 기간내에 배운 많지 않은 지식으로 CRUD의 전 기능을 구현
@@ -11,7 +11,7 @@
     - ArrayList, Map 등에 대한 이해도가 전무해 기능을 전혀 구현해내지 못함
  
 
-# 2번째 JDBC 미니프로젝트 - 회원관리(Java + Oracle SQL) + 게시판기능
+# 2번째 미니프로젝트 - 회원관리JDBC (Java + Oracle SQL) + 게시판CRUD
    - 기능
     - 기존 회원관리 + 로그인항목을 추가하여 서블릿에서 배울 session 개념으로 대체
     - 로그인 회원 정보를 1로 반영하여 1인 회원에 대한 정보값을 출력하는 방식으로 작성
@@ -25,8 +25,18 @@
     - 로그인 항목이 1로 표시된채 온라인에 연결된다면 생길 수 있는 많은 보안이슈와 문제점들
     - 불필요하고 중복된 코드들 산재
     
-
-# 3번째 WebUI 미니프로젝트 
+# 3번째 미니프로젝트 - Elasticsearch 이용한 건강검진기록 dashboard 제작
+   - 사용기능
+   >> Elasticsearch, logstash,filebeat, kibana
+   - https://www.data.go.kr/ 공공데이터포털에서 국민건강보험공단의 40세 이상 50만명분의 데이터를 조합
+   - 신장, 혈압, 혈당, 콜레스테롤 등 건강지표에 관련된 통계 추출
+   
+   - 보안점
+   - 데이터 100mb 제한으로 인한 100만명분의 데이터를 활용하지 못함
+   - 시도코드표를 geo파일로 변환하지 못해 지도를 통한 heatmap 분석을 사용하지 못함
+      
+      
+# TeamProject 1번째 - TodayMusic(음원추천 사이트)
   - 첫 그룹 프로젝트 
   - 담당기능 : 로그인 페이지, 비밀번호 찾기 페이지
   - 담당기능
@@ -46,17 +56,9 @@
     - 비밀번호 변경 후 자식창이 닫히고 로그인창으로 변경되도록 설계하였으나 마지막 실행시 작동안됨
     - 프로젝트 마감까지 충분한 시간이 남았음에도 다른 기능 구현 생각 안함
 
-# 4번째 Elasticsearch 이용한 건강검진기록 dashboard 제작
-   - 사용기능
-   >> Elasticsearch, logstash,filebeat, kibana
-   - https://www.data.go.kr/ 공공데이터포털에서 국민건강보험공단의 40세 이상 50만명분의 데이터를 조합
-   - 신장, 혈압, 혈당, 콜레스테롤 등 건강지표에 관련된 통계 추출
-   
-   - 보안점
-   - 데이터 100mb 제한으로 인한 100만명분의 데이터를 활용하지 못함
-   - 시도코드표를 geo파일로 변환하지 못해 지도를 통한 heatmap 분석을 사용하지 못함
 
-# 5번째 SpringBoot 중간프로젝트
+
+# TeamProject 2번째 - SideOn(사이드프로젝트 플랫폼)
   - 스프링부트를 이용한 Web Service 5인 팀프로젝트 :  https://github.com/PD-team2/SpringProject
   - 담당영역
     >> Front : MyPage,FaQ, MainPage, Chat, ContactMail, QnA
