@@ -21,8 +21,5 @@ public interface NoticeDao {
 	public List<Notice> selectAdminNoticeList();
 
 	public Notice selectAdminNotice(String noticeNo);
-	
-	/** 공지사항 삭제 */
-	public void deleteNoticeDetailNo(String noticeNo);
-	
+
 }

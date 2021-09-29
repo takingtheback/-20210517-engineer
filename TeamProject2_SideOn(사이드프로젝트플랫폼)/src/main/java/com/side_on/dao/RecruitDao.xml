@@ -2,6 +2,7 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.side_on.dao.RecruitDao">
+
 		<resultMap type="com.side_on.dto.RecruitBoard" id="recruitList">
 		        <result property="recruit_num" column="Recruit_num"/>
 		         <result property="memberId" column="memberId"/>
@@ -27,36 +28,12 @@
 		                         <result property="server" column="server"/>
 				</resultMap>
 
-	<resultMap type="com.side_on.dto.Apply" id="applyList">
-		 <result property="apply_num" column="apply_num"/>
-		  <result property="titie" column="title"/>
-		   <result property="recruit_num" column="Recruit_num"/>
-		    <result property="member_id" column="memberId"/>
-		     <result property="part" column="part"/>
-		      <result property="message" column="message"/>
-		       <result property="join_yn" column="join_yn"/>
-		        <result property="pay_check" column="pay_check"/>
-		         <result property="payment_date" column="payment_date"/>
-	</resultMap>
-	
-		<resultMap type="com.side_on.dto.Reward" id="reward">
-		 <result property="payment_id" column="payment_id"/>
-		  <result property="recruit_num" column="Recruit_num"/>
-		   <result property="apply_num" column="apply_num"/>
-		    <result property="writer_memberId" column="writer_memberId"/>
-		     <result property="apply_memberId" column="apply_memberId"/>
-		      <result property="pay_amount" column="pay_amount"/>
-		       <result property="payment_date" column="payment_date"/>
-		        <result property="reward_yn" column="reward_yn"/>
-	</resultMap>
-	
-	
  	<!--1. 모집 게시글 등록하기-->
 	<insert id="insertRecruitBoard" parameterType="com.side_on.dto.RecruitBoard">
 		insert into Recruit
 		values(Recruit_SEQ.nextval, #{memberId}, #{hit}, #{start_date}, #{end_date}, #{title}, #{content},
 		#{save_date}, #{pay_check}, #{pay_amount}, #{visible_check}, #{simple_info}, #{pj_content},
-		#{project_name}, #{Front}, #{Back}, #{aos}, #{ios}, #{uxui}, #{plan}, #{pm}, #{server}, #{status} )
+		#{project_name}, #{Front}, #{Back}, #{aos}, #{ios}, #{uxui}, #{plan}, #{pm})
 	</insert>
 		<!-- 게시판 목록(페이징 적용)  public List<QnABoard> getListPaging(Criteria cri) -->
 	<select id="getListPaging" resultType="com.side_on.dto.RecruitBoard">
@@ -80,160 +57,12 @@
 
 		<!--2. 게시글 총 갯수 -->
    <select id="memberAll" resultMap="recruitList">
-        select recruit_num, memberId, title from recruit where visible_check = 'y' order by rownum desc
+        select recruit_num, memberId, title from recruit
     </select>
 	
 	<!-- 3. 상세 게시글 조회 -->
 	<select id="memberDetail" resultMap="recruitList">
         select * from recruit where recruit_num = #{recruit_num}
     </select>
-    
-    <!-- 4. 지원 접수 : recruitApply-->
-		<insert id="recruitApply" parameterType="com.side_on.dto.Apply">
-		 INSERT INTO Apply  VALUES(
-		 Apply_SEQ.nextval,
-		#{member_id},
-		#{part},
-		#{message}, 
-		#{recruit_num}, 
-		#{join_yn}, 
-		#{payment_date},
-		#{pay_check})
-	</insert>
-	
-	 <select id="getApply_Num"  resultType="int">
-        select apply_num from apply where memberId=#{memberId} and recruit_num = #{recruit_num}
-    </select>
-    
-    <select id="selectFront"  resultType="int">
-    	select  COUNT(*) from apply where recruit_num = #{recruit_num} and part='front'
-    </select>
-    
-     <select id="selectBack"  resultType="int">
-    	select  COUNT(*) from apply where recruit_num = #{recruit_num} and part='back'
-    </select>
-    
-     <select id="selectAos"  resultType="int">
-    	select  COUNT(*) from apply where recruit_num = #{recruit_num} and part='aos'
-    </select>
-    
-     <select id="selectIos" resultType="int">
-    	select  COUNT(*) from apply where recruit_num = #{recruit_num} and part='ios'
-    </select>
-    
-     <select id="selectServer" resultType="int">
-    	select  COUNT(*) from apply where recruit_num = #{recruit_num} and part='server'
-    </select>
-    
-     <select id="selectUxui"  resultType="int">
-    	select  COUNT(*) from apply where recruit_num = #{recruit_num} and part='uxui'
-    </select>
-    
-     <select id="selectPlan" resultType="int">
-    	select  COUNT(*) from apply where recruit_num = #{recruit_num} and part='plan'
-    </select>
-    
-     <select id="selectPm"  resultType="int">
-    	select COUNT(*)from apply where recruit_num = #{recruit_num} and part='pm'
-    </select>
-
-	<!-- 검색 -->
-	<select id= "searchList" resultMap="recruitList" parameterType="String">
-		 select recruit_num, memberId, title from recruit order by rownum desc
-	</select>
-	
-	  <select id="mypageApply"  resultType="map"  parameterType="String">
-         select r.recruit_num, a.apply_num, r.title, r.memberId, a.join_yn 
-		 from apply a, recruit r
-		 where a.recruit_num = r.recruit_num and a.memberId=#{memberId}
- 	   </select>
-	
-		<select id="myApplyAll"  resultType="com.side_on.dto.RecruitMyPage"  parameterType="String">
-         select r.recruit_num, a.apply_num, r.title, r.memberId, a.join_yn 
-		 from apply a, recruit r
-		 where a.recruit_num = r.recruit_num and a.memberId=#{memberId}
- 	   </select>
- 	   
- 	   <select  id="myRecruit" resultMap="recruitList"  parameterType="String">
- 	   		select recruit_num, title,memberId from recruit  
- 	   </select>
- 	   
- 	    <select  id="myApply" resultMap="applyList" parameterType="String">
- 	   		select apply_num,join_yn from apply where memberId= #{memberId}
- 	   </select>
-
- 	   <insert id="recruitCancel">
- 	   		update apply set join_yn = #{join_yn} where Recruit_num = #{recruit_num} and memberId = #{memberId}
- 	   </insert>
- 	   
- 	   <select id="recruitMyRecruit" resultMap="recruitList"  parameterType="String">
-        select recruit_num, title, status, visible_check  from recruit where memberId = #{memberId} and visible_check = 'y'
-   	 </select>
-   	 
-   	   <select id="getApplyList" resultMap="applyList" > 
-        select *  from apply  where recruit_num = #{recruit_num}  
-   	 </select>
-   	 
-   	  <select id="getMemberInfo" parameterType="String" resultType="String"> 
-        select email  from member where member_Id= #{memberId}
-   	 </select>
-   	 
-   	 <insert id="recruitDelete" > 
-   	 	update recruit set visible_check = #{n} where Recruit_num = #{recruit_num}
-   	 </insert>
-   	 
-   	 <insert id="updateRecruitBoard" parameterType="com.side_on.dto.RecruitBoard">
-		update recruit set start_date=#{start_date}, end_date=#{end_date}, title=#{title}, content=#{content},pay_check=#{pay_check}, pay_amount=#{pay_amount}, simple_info=#{simple_info}, pj_content=#{pj_content},project_name=#{project_name}, front=#{Front}, back=#{Back}, aos=#{aos}, ios=#{ios}, uxui=#{uxui}, plan=#{plan}, pm=#{pm}, server=#{server}
-		where recruit_num = #{recruit_num}
-	</insert>
-	
-	<select id="getWriterMemberId" parameterType="int" resultType="String">
-		select memberId from recruit where recruit_num = #{recruit_num}
-	</select> 
-	
-	<insert id="setReward"  parameterType="com.side_on.dto.Reward">
-	 INSERT INTO reward  VALUES(
-		 reward_SEQ.nextval,
-		#{recruit_num},
-		#{apply_num},
-		#{writer_memberId}, 
-		#{apply_memberId}, 
-		#{pay_amount}, 
-		#{payment_date},
-		#{reward_yn})
-	</insert>
-	
-	<select id="getPayAmount" resultType="String">
-		select pay_amount from recruit where memberId = #{writer_memberId} and Recruit_num = #{recruit_num}
-	</select>
-	
-	<select id="getRewardList"  resultMap="reward" >
-		select * from reward
-	</select>
-
-	<insert id="getReward" > 
-		update reward set reward_yn='y'
-		where recruit_num = #{recruit_num} and payment_id = #{payment_id}
-	</insert>
-	
-	<select id="getMemberId"  resultType="String">
-	    select member_Id from member where name=#{name} and mobile=#{mobile}
-	</select>
-	
-	<select id="getPwMemberId"  resultType="String">
-	    select member_Id from member where member_Id=#{memberId} and mobile=#{mobile} 
-	</select>
-	
-	 <insert id="resetPw" >
-		update member set member_pw=#{resetPw} where member_Id= #{memberId}
-	</insert> 
-	
-	<select id="listSearch" resultType="com.side_on.dto.RecruitBoard" parameterType="String">
-	 select  recruit_num, memberId, title from recruit 
-	 where visible_check='y' and
-   	 title like  '%'||#{search, jdbcType=VARCHAR}||'%'  OR 
-   	 content like  '%'||#{search, jdbcType=VARCHAR}||'%'  
-   	 OR pj_content like  '%'||#{search, jdbcType=VARCHAR}||'%' 
-	</select>
 	
 </mapper>

@@ -1,50 +1,27 @@
 @charset "UTF-8";
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-.inputArea {
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
-
 .ChatForm {
     position: relative;
-    width: 1177px;
-    height: 800px;
+    width: 400px;
+    height: 600px;
     margin: auto;
-    margin-top: 110px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    
 }
 
-* {
-    margin:0;
-    padding:0;
-}
 
 .container {
 	position:relative;
-    width: 500px;
-    margin-top:20px;
-    margin:auto;
-    padding: 0px;
-}
-
-.fileUpload {
+    width: 630px;
     margin: auto;
-    font-family:'Pretendard';
-    padding-top:15px;
-	padding-left:20px;
-    font-size:15px;
-    color:#585858;
-    width: 350px;
-    height: 56px;
-    background: #F5F5F5;
-    border-radius: 8px;
-    border:0px;
+    padding: 0px;
 }
 
 .container h1 {
     padding: 5px 5px 5px 15px;
     color: #F6F6F6;
     margin-bottom: 20px;
-    text-align:center;
 }
 
 .chating {
@@ -56,6 +33,7 @@
     overflow: auto;
     border-radius: 8px;
     padding:20px;
+
 }
 
 .chating .me {
@@ -63,19 +41,17 @@
     font-size:20px;
     color: #ffc800;
     text-align: right;
-}
 
+}
 .chating .others {
     font-family:'Pretendard'; 
     font-size:20px;
     color: #585858;
     text-align: left;
 }
-
 table.inputTable {
 	 margin: auto;
 }
-
 input {
     margin-top: 12px;
     margin: auto;
@@ -88,12 +64,12 @@ input {
     border-radius: 8px;
     border:0px;
 }
-
 #yourMsg {
     display: none;
 }
 
 .inputTable Button {
+	
     margin-top: 0px;
     margin-left: 10px;
     font-family:'Pretendard'; 
@@ -104,45 +80,5 @@ input {
     width: 135px;
     height: 56px;
     border:0px;
-}
 
-.roomContainer{
-	margin-top:10px;
-	margin:auto;
-	background-color: #F6F6F6;
-	width: 500px;
-	height: 500px;
-	overflow: auto;
 }
-
-.roomList{
-	border: none;
-}
-
-.roomList th{
-	border: 1px solid #FFBB00;
-	background-color: #fff;
-	color: #FFBB00;
-}
-
-.roomList td{
-	border: 1px solid #FFBB00;
-	background-color: #fff;
-	text-align: left;
-	color: #FFBB00;
-}
-
-.roomList .num{
-	width: 75px;
-	text-align: center;
-}
-
-.roomList .room{
-	width: 350px;
-}
-
-.roomList .go{
-	width: 71px;
-	text-align: center;
-}
-	

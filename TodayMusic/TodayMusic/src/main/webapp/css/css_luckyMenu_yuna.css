@@ -1,0 +1,89 @@
+@charset "UTF-8";
+
+div {
+	text-align: center;
+	opacity: 0.9;
+}
+
+/* hr 대시 선 */
+hr {
+	border-top: 1px dashed #bbb;
+}
+
+/* lotto 랜덤 번호 출력*/
+p {
+	text-align: center;
+	background-color: #6495ED;
+}
+
+/* 둥근 모양 메시지 div */
+.parenthesis {
+	width: 500px;
+	padding: 0 10px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 10px 15px;
+	background-color: #6495ED;
+	color: #FAEBD7;
+	border-radius: 15px;
+}
+
+/*
+.parenthesis::before,
+.parenthesis::after{
+	position: absolute;
+	content: "";
+	width: 30px;
+	height: 50px;
+	-webkit-box-sizing : border-box;
+	box-sizing: border-box;	
+}
+
+.parenthesis::before {
+	top:0;
+	left:0;
+	border-top: 1px solid #555;
+	border-left: 1px solid #555;
+}
+
+.parenthesis::after {
+	bottom: 0;
+	right: 0;
+	border-bottom: 1px solid #555;
+	border-right: 1px solid #555;
+}
+*/
+
+/* button */
+input[type=button] {
+	text-align: center;
+	background-color: #FAEBD7;
+	border: 1px solid #888888;
+	color: #6495ED;
+	letter-spacing: -1px;
+	padding: 3px 5px;
+	margin: 2px 3px;
+	width: auto;
+	word-break: keep-all;
+	border-radius: 10px;
+	text-decoration: none;
+	font-size: 0.9375em;
+	background-color: #FAEBD7;
+}
+
+.box {
+	width: 48%;
+	height: 200px;
+	border: 1px solid #6495ED;
+	float: left;
+	border-radius: 15px;
+	background: white;
+	text-align: center;
+	margin-right: 1%;
+	margin-left: 1%;
+}
+
+h2 {
+  color: #6495ED;
+  font-size: 1em;
+}

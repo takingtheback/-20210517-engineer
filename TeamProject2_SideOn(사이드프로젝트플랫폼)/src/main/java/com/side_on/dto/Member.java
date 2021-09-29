@@ -29,10 +29,4 @@ public class Member {
 	
 	private String reward;
 	
-	// find 연결
-	private String find_title;
-	
-	private int find_no;
-	
-	private String find_date;
 }

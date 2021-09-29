@@ -11,7 +11,6 @@
 </head>
 <body>
 <%@ include file="../inc/header.jsp" %>
-
 <!-- Header-->
 <header class="bg-warning py-5">
 <a href="/board/QnABoard" style="text-decoration:none">
@@ -26,75 +25,60 @@
  </div>
  </a>
 </header>
-
-<!-- QnA Board -->
 <div class="QnAForm">
-	<table class="QnATable" >
-		<tr class="QnATitle">
-			<th>번호</th>
-			<th>문의제목</th>
-			<th>작성자</th>
-			<th>작성일</th>
-			<th>조회수</th>
-		</tr>
-		<tr>
-			<!-- status.index => 0시작, status.count => 1시작 -->
-			<th>${dto.qnaBoardNo}</th>
-			<th>${dto.qnaBoardTitle}</th>
-			<th>${dto.memberId}</th>
-			<th>${dto.qnaBoardDate}</th>
-			<th>${dto.qnaBoardViews}</th>
-		</tr>
-		<tr colspan= "5" class="QnATitle">
-			<th>문의내용</th>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-		</tr>
-		<tr class="qnaContents">
-			<th colspan="5"><textarea id="qnaContentsArea" name="qnaContentsArea" rows="5" cols="33">
-			${dto.qnaBoardContents}</textarea></th>
-		</tr>
+<table class="QnATable" >
+	<tr class="QnATitle">
+		<th>번호</th>
+		<th>문의제목</th>
+		<th>작성자</th>
+		<th>작성일</th>
+		<th>조회수</th>
+	</tr>
+	
+	<tr>
+		<!-- status.index => 0시작, status.count => 1시작 -->
+		<th>${dto.qnaBoardNo}</th>
+		<th>${dto.qnaBoardTitle}</th>
+		<th>${dto.memberId}</th>
+		<th>${dto.qnaBoardDate}</th>
+		<th>${dto.qnaBoardViews}</th>
+	</tr>
+	<tr colspan= "5" class="QnATitle">
+		<th>문의내용</th>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+	<tr class="qnaContents">
+	<th colspan="5"><textarea id="qnaContentsArea" name="qnaContentsArea" rows="5" cols="33">
+	${dto.qnaBoardContents}</textarea></th>
+	</tr>
 	</table>
 
 </div>
 		
 <div class=UpdateButtonArea>
+
    <c:choose>
-		<c:when test="${(not empty memberId && not empty grade) || empty dto}">
-			<c:if test="${ memberId == dto.memberId }">
-				<button type="button" class="btn-warning" onmouseover="this.style.color='#ffc800';" onmouseout="this.style.color='black';"
-				onclick="location.href='QnABoardUpdate?qnaBoardNo=${dto.qnaBoardNo}'">수정하기</button>
-				<button type="button" class="btn-warning" onmouseover="this.style.color='#ffc800';" onmouseout="this.style.color='black';"
-				onclick="deleteConfirm()">삭제하기</button>
-			</c:if>
-		</c:when>
+	<c:when test="${(not empty memberId && not empty grade) || empty dto}">
+	<c:if test="${ memberId == dto.memberId }">
+	<button type="button" class="btn-warning" onmouseover="this.style.color='#ffc800';" onmouseout="this.style.color='black';"
+	onclick="location.href='QnABoardUpdate?qnaBoardNo=${dto.qnaBoardNo}'">수정하기</button>
+	<button type="button" class="btn-warning" onmouseover="this.style.color='#ffc800';" onmouseout="this.style.color='black';"
+	onclick="deleteConfirm()">삭제하기</button>
+	</c:if>
+	</c:when>
 	</c:choose>
+	
 	<button type="button" class="btn-warning" onmouseover="this.style.color='#ffc800';" onmouseout="this.style.color='black';"
 	onclick="location.href='QnABoard'">되돌아가기</button>
 </div>
-	<input type="hidden" name="deleteButton" id="deleteButton" onclick="location.href='QnABoardDelete?qnaBoardNo=${dto.qnaBoardNo}'"></input>
 
-<!-- 라이브리 시티 설치 코드 -->
-<div id="lv-container" data-id="city" data-uid="MTAyMC81Mzc3NS8zMDI0OA==" class="LiveReArea">
-	<script type="text/javascript">
-	   (function(d, s) {
-	       var j, e = d.getElementsByTagName(s)[0];
-	
-	       if (typeof LivereTower === 'function') { return; }
-	
-	       j = d.createElement(s);
-	       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-	       j.async = true;
-	
-	       e.parentNode.insertBefore(j, e);
-	   })(document, 'script');
-	</script>
-<noscript> 라이브리 댓글 작성을 위해 JavaScript를 활성화 해주세요</noscript>
-</div>
-<!-- 시티 설치 코드 끝 -->
+<input type="hidden" name="deleteButton" id="deleteButton" onclick="location.href='QnABoardDelete?qnaBoardNo=${dto.qnaBoardNo}'"></input>
+
+
 
 </body>
 </html>

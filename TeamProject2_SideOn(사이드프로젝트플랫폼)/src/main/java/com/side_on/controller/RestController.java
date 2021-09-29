@@ -28,24 +28,12 @@ public class RestController {
 		return "rest/restList";
 	}
 	
-	@RequestMapping("/rest/restManageModal")
-	public String restManageModal(String restNo, String restResult) {
-		log.debug(restNo + " / " + restResult);
-		restService.restManageModal(restNo, restResult);
-		return "rest/restList";
-	}
-	
-	@RequestMapping("/recruit/restReportModal")
-	public String restReportModal(int recruit_num, String radioReason, String textReason) {
-		log.debug(recruit_num + "/" + radioReason + "/" + textReason);
-		String reason = null;
-		if(radioReason.equals("etc")) {
-			reason = textReason;
-		} else {
-			reason = radioReason;
-		}
-		restService.restReportModal(recruit_num, reason);
-		return "recruit/recruitHome";
+	@RequestMapping("/rest/restDetail")
+	public String restDetail(String restNo, Model model, HttpSession session) {
+		Rest dto = restService.restDetail(restNo);
+		log.debug("rest Controller :: restDetail : " + restNo);
+		model.addAttribute("dto", dto);
+		return "rest/restDetail";
 	}
 	
 }

@@ -74,7 +74,7 @@
 	<input type="text" name="reward" value="<%= dto.getReward() %>" readonly="readonly"><br>
 	
 	<div class="btn both">
-	<button type="submit" class="btn btn-warning">내정보변경</button>
+	<button type="submit" class="btn btn-info">내정보변경</button>
 	<button type="button"  class="btn btn-danger" onclick="location.href='/board/Mypage'">돌아가기</button>
 	</div>
 </form>

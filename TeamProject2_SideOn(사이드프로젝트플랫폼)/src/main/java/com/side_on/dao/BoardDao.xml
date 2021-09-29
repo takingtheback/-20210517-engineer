@@ -21,6 +21,7 @@
 	
 	<!-- 게시판 목록(페이징 적용)  public List<QnABoard> getListPaging(Criteria cri) -->
 	<select id="getListPaging" resultType="com.side_on.dto.QnABoard">
+    
     <![CDATA[
 		select rn,QNABOARD_NO, QNABOARD_TITLE,	QNABOARD_CONTENTS, MEMBER_ID, QNABOARD_DATE, QNABOARD_VIEWS from (
 		select /*+INDEX_DESC(QnABoard pk_board) */ rownum as rn,QNABOARD_NO, QNABOARD_TITLE, QNABOARD_CONTENTS, MEMBER_ID, QNABOARD_DATE, QNABOARD_VIEWS
@@ -84,10 +85,12 @@
 	<!-- 문의글 조회수 증가	public Object updateQnABoardViews(int qnaBoardNo) -->
 	<insert id="updateQnABoardViews" parameterType="com.side_on.dto.QnABoard">
 		UPDATE 
-			QNABOARD 
+		    QNABOARD
 		SET
 		    QNABOARD_VIEWS = QNABOARD_VIEWS + 1
 		WHERE
 		    QNABOARD_NO= #{qnaBoardNo}
     </insert>
+	
+	
 </mapper>

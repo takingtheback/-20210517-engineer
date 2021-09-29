@@ -36,9 +36,9 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="/recruit/recruitAdmin">
+                <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Reward Management</span>
+                    <span>Member Management</span>
                 </a>
             </li>
 
@@ -47,6 +47,14 @@
                 <a class="nav-link" href="../notice/adminNoticeList">
                     <i class="fas fa-bullhorn"></i>
                     <span>Notice</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - 커뮤니티 -->
+            <li class="nav-item">
+                <a class="nav-link" href="../board/chatAdmin">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Chat</span>
                 </a>
             </li>
 

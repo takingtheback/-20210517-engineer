@@ -2,7 +2,6 @@
     position: relative; z-index: 2;
     margin-top: 150px;
 }
-
 .Result-form h1 {
     font-family:'Pretendard'; 
     font-size: 32px; color: #7C7B7B;
@@ -22,7 +21,6 @@
     text-align: center;
     width: 1184px;
 }
-
 .button {
     position: relative;
     margin-top: 20px;

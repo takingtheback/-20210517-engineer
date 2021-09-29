@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>비밀번호찾기|오늘뭐듣지?</title>
+    <link type="text/css" rel="stylesheet" href="css/css_JHK.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+   
+    <script type="text/javascript">   
+     function sendMail() {
+    	 // var emailElement = {
+         //     memberId : "user01",
+         //     tempNum : "123456",
+         //	 	email : "jaehyunkim19826@naver.com"
+        //  }
+    	 var tempnum = randomNumber();
+		 document.getElementById("parentTempNum").value = tempnum;
+		 console.log("tempnum :" + document.getElementById("parentTempNum").value);
+  
+    	 var emailElement = {};
+    	 emailElement.memberId = document.getElementById("memberId").value;
+    	 emailElement.tempNum = tempnum;
+    	 console.log("emailElement.tempNum : " + emailElement.tempNum);
+    	 emailElement.email = document.getElementById("email").value;
+    	 
+    	 //emailjs 발송
+         emailjs.init("user_irTOcdicOfCi1q3ar3yJT");
+         emailjs.send("service_FindMemberPw","template_7jeplxf",emailElement)
+         .then(function(response) {
+             console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
+             
+             window.name = "parentForm";
+             // window.open 사용
+             var emailCheckWin = window.open("sendEmail.html","childForm");
+            // emailCheckWin.document.getElementById("childTempNum").value = parentTempNum;
+             
+        }, function(err) {
+             console.log("FAILED. error=", err);
+             document.getElementById("ErrorMSG").innerHTML = "EmailJs Service Error";
+             return false;
+          });
+     };
+   	
+     function checkEmail(email) {
+     	var reg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+     	return reg.test(email);
+     }
+     
+     function randomNumber() {
+		  let randomNum = ''
+		  for (let i = 0; i < 6 ; i++) {
+			  randomNum += Math.floor(Math.random() * 10);
+		  }
+		  return randomNum
+		}
+  </script>
+    
+ 
+</head>
+    
+<body class="findPw-Page">
+ <section class="findMemberPw-form">
+        <h1>비밀번호찾기</h1>
+        <h3 id="ErrorMSG"></h3>
+        <form action="#" method="post">
+            <div class="int-area">
+            <input type="hidden" name="parentTempNum" id="parentTempNum">
+            <input type="text" name="memberId" id="memberId"
+                   placeholder=" USER ID" autocomplete="off" required>
+               
+            </div>
+            <div class="int-area">
+            <input type="text" name="email" id="email"
+                   placeholder=" E-mail" autocomplete="off" required>
+            </div>
+            <div class="btn-area">
+            
+            <button type="button" onclick="sendMail();">확인</button>
+            </div>
+            </form>
+          
+        </section>
+</body>
+</html>

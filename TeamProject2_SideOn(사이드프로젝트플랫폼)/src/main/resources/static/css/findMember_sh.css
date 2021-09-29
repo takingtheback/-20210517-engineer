@@ -7311,8 +7311,7 @@ textarea.form-control-lg {
 }
 
 .text-center1 {
-  position: absolute;
-  bottom: 150px;
+ 
   text-align: center !important;
  
 }
@@ -10925,4 +10924,4 @@ textarea.form-control-lg {
     margin-right: 0;
   }
 }
-}
+

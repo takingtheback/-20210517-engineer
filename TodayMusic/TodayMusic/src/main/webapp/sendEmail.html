@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>비밀번호찾기|오늘뭐듣지?</title>
+<link type="text/css" rel="stylesheet" href="css/css_JHK.css">
+<script type="text/javascript">
+	/* 윈도우 로드 이벤트 */
+	window.onload = function() {
+	// 부모창의 이메일객체 가져오기
+	var parentEmailElement = window.opener.document.getElementById("email");
+	
+	// 메세지 출력객체 가져오기 및 변경
+	var emailMsgElement = document.getElementById("emailMsg");
+	emailMsgElement.innerHTML = parentEmailElement.value;
+	
+	// 부모창의 인증번호 객체 가져오기
+	var parentEmailElement = window.opener.document.getElementById("parentTempNum");
+	console.log("parentEmailElement : " + parentEmailElement.value);
+	
+	// 자식창의 아이디객체 가져오기
+	var childEmailElement = document.getElementById("childTempNum");
+	
+	// 부모창의 인증번호를 자식창의 인증번호로 초기화 변경
+	childEmailElement.value = parentEmailElement.value;
+	console.log("childEmailElement : " + childEmailElement.value);
+	
+	document.getElementById("tempNumConfirm").focus();
+	}
+	
+	
+	function checkForm() {
+		var tempNum = document.getElementById("childTempNum").value;
+		var tempNumConfirm = document.getElementById("tempNumConfirm").value;
+		console.log("tempNum : " + tempNum);
+		console.log("tempNumConfirm : " + tempNumConfirm);
+		
+		// 비밀번호와 비밀번호확인 매칭 검증
+		if(tempNum != tempNumConfirm) {
+			document.getElementById("tempNumConfirm").focus();
+			document.getElementById("ErrorMsg").innerHTML = "입력하신 인증번호가 일치하지 않습니다.";
+			return false; 
+		} else {
+			location.replace("inputMemberPw.html"); 
+		}
+    }
+	
+</script>	
+</head>
+    
+<body class="findPw-Page">
+ <section class="findMemberPw-form">
+        <h1>인증메일발송</h1>
+        <h3 id="emailMsg">message</h3>
+        <h3 id="ErrorMsg"></h3>
+       	<input type="hidden" name="childTempNum" id="childTempNum">
+        <form action="inputMemberPw.html" method="post">
+            <div class="int-area">
+            <input type="text" name="tempNumConfirm" id="tempNumConfirm"
+                   placeholder=" 인증번호" autocomplete="off" required>
+            </div>
+            <div class="btn-area">
+            <button type="submit" onclick="return checkForm();">확인</button>
+            </div>
+            <div class="caption">
+            <a href="cancel">취소</a>
+            </div>
+            </form>
+            
+        </section>
+</body>
+</html>

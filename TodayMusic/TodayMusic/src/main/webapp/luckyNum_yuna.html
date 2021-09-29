@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>lotto | 오늘뭐듣지?</title>
+<link rel="stylesheet" href="css/css_luckyMenu_yuna.css" />
+<script type="text/javascript" src="js/js_luckyMenu_yuna.js"></script>
+<script type="text/javascript">
+	var currentDate = getCurrentDate();
+
+	/* 45 담을 배열 */
+	var num = [];
+
+	/* 45 까지 배열에 담기 */
+	for (index = 1; index < 46; index++) {
+		num.push(index);
+	}
+
+	var lotto = [];
+
+	/* 랜덤 5개 정수 중복 없이 뽑기 */
+	for (j = 1; j < 999; j++) {
+		var randNum = Math.floor(Math.random() * num.length) + 1;
+		if (lotto.indexOf(randNum) == -1) {
+			lotto.push(randNum);
+			if (lotto.length == 5) {
+				break;
+			}
+		}
+	}
+
+	/* 숫자 오름차순 정렬 */
+	function sortLotto(a, b) {
+		return a - b;
+	}
+
+	var lottoNumText = lotto.sort(sortLotto);
+
+	/* 아... body에 담겨졌어야 하는데 */
+	document.write("<br><hr>");
+	document.write("<div class='parenthesis'>");
+	document.write("<div>⋆⁺₊⋆✿｡ " + currentDate + " ｡✿₊·⁺₊</div>");
+	document.write("<div>。⋆⁺✧⋆⁺₊⋆ ☁︎ ⋆⁺₊⋆ ☾⋆⁺₊⋆✩₊∗ ♡ ⁺☁︎ ∗ˈ‧₊°。</div>");
+	document.write("<div>₊⋆☾⋆⁺₊ 오늘 당신의 행운의 숫자는 ✧°₊·ˈ⋆⁺</div>");
+	document.write("<p>[" + lottoNumText + "]</p>");
+	document.write("<div>  ˗ˋˏ ⋆⁺₊∗ 입니다! ( つ’-’)╮—̳͟͞͞♥ ₊⋆₊∗  ˎˊ˗ </div>");
+	document.write("</div>");
+</script>
+</head>
+<body>
+	<hr>
+	<br>
+	<div>
+		<input type="button" onclick="self.close();" value="Σ＞―(〃°o°〃)♡→">
+	</div>
+</body>
+</html>

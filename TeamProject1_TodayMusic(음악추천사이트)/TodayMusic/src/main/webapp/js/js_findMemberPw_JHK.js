@@ -1,6 +1,0 @@
-/**
- * findMemberPw Script
- */
-
-
-

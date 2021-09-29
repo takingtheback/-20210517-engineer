@@ -80,9 +80,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                                 미처리 신고</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                            	<c:out value="${restCount}"></c:out>
-                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">3</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-ghost fa-2x text-gray-300"></i>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>마이 페이지 | 오늘뭐듣지?</title>
+<link type="text/css" rel="stylesheet" href="css/css_sunghyun.css">
+
+<script type="text/javascript">
+
+function writeLengthCheck(takeData) {
+	var writeLengthElement = document.getElementById("writeLength");
+	writeLengthElement.innerHTML = takeData.length;
+	}
+	
+function clickReset() {
+	document.getElementById("input_1").focus();
+}
+
+function openWriteWindow() {
+	var specs = "width=700, height=500, top=200, left=300";
+	var writeWin = window.open("review.html", "_blank", specs);
+	}
+	
+</script>
+</head>
+<body>
+<header>
+  <h1><a href="index.html">Today Music</a></h1>
+  <nav class="menu">
+    <span><a href="login.html">로그아웃</a></span>
+    <span><a href="music_now.html" style="text-decoration: none; color:white;">지금 뭐 듣지?</a></span>
+    <span><a href="mypage.html">마이페이지</a></span>
+  </nav>
+</header>
+<h3>마이 페이지</h3>
+<main>
+	<h3>마이 페이지</h3>
+	
+	<div class="mypage_screen"  align="center">
+		<ul class="mypage_main">
+		<li><a href="memberInfo_yuna.html"> 내 정보 조회</a><li> 
+		<li>> 나의 취향</li>
+			<div class="myTaste" align="center">
+			<br>
+			발라드형
+			<br>
+			<a href="mbti.html"><input type="button" value="다시 테스트하기" class="btn"></a>
+			</div>
+			</table>
+		
+		<li>> 좋아요 목록</li>
+		<form name="playListForm" id="playListForm" method="post" class="playListForm" action="/Page" onsubmit="return false;">
+		<input type="hidden" name="cmd" value="playList">
+		<div class="likeListdiv" id="likeList" align="center">
+		<div class="row head">
+			<div class="subdiv">
+				<div class="check">선택</div>
+				<div class="img">앨범아트</div>
+				<div class="songTitle">제목</div>
+				<div class="singer">가수</div>
+				<div class="likeListcmd">삭제</div>
+			</div>
+		</div>
+		
+		<div class="row data">
+			<div class="subdiv">
+				<div class="check"><input type="checkbox" name="like" value="1" checked="" onclick="javascript:likeList.checkItem();">&nbsp;</div>
+				<div class="img"><img src="./img/Alchol-Free_TWICE.png" width="60"></div>
+				<div class="songTitle"><span>Alcohol-Free</span></div>
+				<div class="singer"><span>TWICE</span></div>
+				<div class="num" style="display: none;"><input class="p_num" name="p_num" value="1"></div>
+				<div class="likeListcmd"><a href="javascript:void(0)" class="abutton" onclick="javascript:likeList.delItem();">삭제</a></div>
+			</div>
+		</div>
+		</div>
+		
+		</ul>
+	</div>
+	<div align="center">
+	<input type="button" value="추천 곡 쓰러가기" class="btn_write" onclick="openWriteWindow()">
+	</div>
+	
+</main>
+</body>
+</html>

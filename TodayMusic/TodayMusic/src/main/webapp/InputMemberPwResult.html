@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>비밀번호찾기|오늘뭐듣지?</title>
+<link type="text/css" rel="stylesheet" href="css/css_JHK.css">
+<script type="text/javascript">
+function close() {
+	Window.opener.location.href="login.html";
+	window.close();
+}
+</script>
+
+</head>
+
+<body class="findPw-Page">
+<section class="findMemberPw-form">
+	<h1>비밀번호 변경 완료</h1>
+	<h3> 새 비밀번호로 다시 로그인해주세요.</h3>
+		<form action="login.html" method="post">
+			<div class="btn-area">
+			<button type="submit" onclick="close()">로그인</button>
+		</div>
+	</form>
+</section>
+</body>
+</html>

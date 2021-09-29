@@ -41,5 +41,4 @@
 		select * from notice where notice_no=#{noticeNo}
 	</select>
 
-
 </mapper>

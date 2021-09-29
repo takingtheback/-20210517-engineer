@@ -8,7 +8,6 @@ input[id*="answer"] + label:hover {
 input.footerButton:hover {
 	color:#ffc800;
 }
-
 .FAQForm {
     position: relative;
     width: 1086px;
@@ -16,14 +15,13 @@ input.footerButton:hover {
     margin: auto;
     margin-top: 40px;
 }
-
 .FAQ_title {
     font-family:'Pretendard'; 
     font-size: 40px;
     margin-left: 24px;
-    margin-right: -4px;  
+    margin-right: -4px;
+    
 }
-
 .FAQ_explain {
     font-family:'Pretendard'; 
     font-size: 18px;
@@ -32,7 +30,6 @@ input.footerButton:hover {
     margin-bottom: 42px;
     color: #8A8A8A;
 }
-
 input[id*="answer"] {
 	display: none;
     margin:auto;
@@ -43,9 +40,11 @@ input[id*="answer"] + label {
     margin-bottom: 8px;
 	display: block;
 	padding: 16px;
-	width:1083px;  
+	width:1083px;
+    
 	border:1px solid #E0E0E0;
     border-radius: 8px;
+    	
 	color:#353535;
 	font-size:20px;
 	background:#ffffff;
@@ -81,6 +80,7 @@ input[id*="answer"] + label + div {
     height: 320px;
     font-size:18px;
     background-color: #E5E5E5;
+
 }
 
 input[id*="answer"] + label + div p {
@@ -119,7 +119,8 @@ input[id*="answer"]:checked + label em {
     margin-left: 20px;
     width: 544px;
     height: 190px;
-    top: 948px;   
+    top: 948px;
+    
 }
 
 .footerTitle {
@@ -142,13 +143,15 @@ input[id*="answer"]:checked + label em {
     font-family:'Pretendard'; 
     font-size: 16px;
     margin-left: 20px;
-    color: #7C7B7B;    
+    color: #7C7B7B;
+    
+    
 }
 
 .footerButton {
     position: relative;
     left: 365px;
-    bottom: 60px;
+    bottom: 50px;
     font-family:'Pretendard'; 
     font-size: 16px;
     justify-content: center;
@@ -156,7 +159,7 @@ input[id*="answer"]:checked + label em {
     width: 157px;
     height: 51px;
     background: #FFFFFF;
-    border: 2px solid #FFC800;
+    border: 1px solid #636363;
     box-sizing: border-box;
     border-radius: 8px;
 }

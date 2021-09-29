@@ -3,36 +3,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.side_on.dao.FindDao">
 
- 
-	<resultMap type="com.side_on.dto.Find" id="findList">
-	  <result property="find_no" column="find_no"/>
-	  <result property="find_date" column="find_date"/>
-	  <result property="find_title" column="find_title"/>
-	  <result property="find_writer" column="find_writer"/>
-	  <result property="find_address" column="find_address"/>
-	  <result property="find_position" column="find_position"/>
-	   <result property="find_imgpath" column="find_imgpath"/>
-	   <result property="find_content" column="find_content"/>
-	</resultMap>
-	
-    
-	<!--게시판 조회 
+ 	<!--게시판 조회 
  	public List<Find> selectFindList() -->
-	<select id="findMemberList" resultMap="findList">
-		select * from find_member order by find_no desc
+	<select id="selectFindList" resultType="com.side_on.dto.Find">
+		select * from find_member order by find_date
 	</select>
 	
 	<!-- 게시글 본문 조회 
-	public Find selectFindDetail(String find_no); -->
-	<select id="selectFindDetail" resultMap="findList">
-		select * from find_member where find_no=#{find_no}
+	public Find selectFindDetail(String find_writer); -->
+	<select id="selectFindDetail"  parameterType="map" resultType="com.side_on.dto.Find">
+		select * from find_member where find_writer=#{find_writer}
 	</select>
 	
 	<!-- 게시물 작성 
 	public int insertFindMember(Find dto) -->
 	<insert id="insertFindMember" parameterType="com.side_on.dto.Find">
 		insert into find_member
-		values(SEQ_FIND_MEMBER.nextval, #{find_date}, #{find_title}, #{find_writer}, #{find_address}, #{find_position}, #{find_imgpath}, #{find_content})
+		values(#{find_date}, #{find_title}, #{find_writer}, #{find_address}, #{find_position}, #{find_imgpath}, #{find_content})
 	</insert>
 	
     <!-- 게시글 수정 	
@@ -40,20 +27,20 @@
     <insert id="updateFindMember" parameterType="com.side_on.dto.Find">
         UPDATE find_member
 		SET
-			find_date = #{find_date},
 			find_title = #{find_title}, 
 			find_address= #{find_address},
 			find_position = #{find_position},
 			find_imgpath = #{find_imgpath},
 			find_content = #{find_content}
 		WHERE
-			find_no = #{find_no}
+			find_writer = #{find_writer}
     </insert>
     
     <!-- 게시글 삭제 
-    public Find deleteFindList(int find_no) -->
+    public Find deleteFindList(String find_writer) --> 
     <delete id="deleteFindList">
-		delete from find_member WHERE find_no=#{find_no}
+		delete from find_member WHERE find_writer= #{find_writer}
 	</delete>
-	
+  	
+
 </mapper>

@@ -71,7 +71,7 @@ public class NoticeService {
 	/**
 	 * notice write
 	 * @param dto 
-	 * @return 
+	 * @return
 	 */
 	public int addNotice(Notice dto) {
 		dto.setNoticeDate(Utility.getCurrentDate());
@@ -79,15 +79,6 @@ public class NoticeService {
 		log.debug("dto :: " + dto);
 		log.debug("notice dao result :: " + result);
 		return result;
-	}
-
-	/**
-	 * notice delete
-	 * @param noticeNo
-	 */
-	public void deleteNoticeDetail(String noticeNo) {
-		noticeDao.deleteNoticeDetailNo(noticeNo);
-		log.debug("notice delete No. " + noticeNo);
 	}
 
 	

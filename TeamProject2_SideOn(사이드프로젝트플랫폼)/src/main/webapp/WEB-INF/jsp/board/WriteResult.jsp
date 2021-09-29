@@ -12,6 +12,7 @@
 <section class="Result-form">
 	<h1>문의글 작성 완료</h1>
 	<h3>문의게시판으로 복귀합니다.</h3>
+		
 			<div class="btn-area">
 			<button type="submit" class="btn-warning"
                     onclick="location.href='QnABoard'">QnA 게시판</button>

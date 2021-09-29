@@ -24,7 +24,5 @@ public class Rest {
 	private String restConfirm;
 	
 	private String restCheck;
-	
-	private String restResult;	
 
 }

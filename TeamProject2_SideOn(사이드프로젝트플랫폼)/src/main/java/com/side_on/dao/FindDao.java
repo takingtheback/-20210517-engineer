@@ -1,25 +1,21 @@
 package com.side_on.dao;
 
-import java.util.ArrayList;
 import java.util.List;
-
 
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.side_on.dto.Criteria;
 import com.side_on.dto.Find;
-import com.side_on.dto.QnABoard;
 
 
 @Mapper
 public interface FindDao {
 	
 	/** 게시판 전체조회 */
-	public ArrayList<Find> findMemberList();
+	public List<Find> selectFindList();
 	
 	/** 게시글 세부조회 */
-	public Find selectFindDetail(int find_no);
+	public Find selectFindDetail(String find_writer);
 	
 	/** 게시글 등록 */
 	public int insertFindMember(Find dto);
@@ -28,7 +24,7 @@ public interface FindDao {
 	public int updateFindMember(Find dto);
 
 	/** 게시글 삭제 */
-	public int deleteFindList(int find_no);
+	public int deleteFindList(String find_writer);
 
 
 }

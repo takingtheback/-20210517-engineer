@@ -28,22 +28,24 @@
 
 <form class="formArea" action="/board/QnAWrite" method="post">
 
-	<input type="hidden" class="mailForm" name="memberId" id="memberId" value="${memberId}">
-	<input type="hidden" name="grade" id="grade" value="${grade}">
-	
-	<div class="int-area">
-		<input type="text" class="mailForm" name="qnaBoardTitle" id="qnaBoardTitle" maxlength='50'
-		       placeholder="문의 제목" autocomplete="off" required>
-	</div>
-	<div class="text-area">
-		<p><textarea  class="textForm" name="qnaBoardContents" id="qnaBoardContents" maxlength='4000'
-		     placeholder="문의 내용을 입력해주세요.."></textarea></p>
-	</div>    
-	<div style="position: absolute; right: 370px; bottom: -40px;">
-		<button type="submit" class="btn-warning">작성하기</button>
-		<button type="button" class="btn-warning" onmouseover="this.style.color='#ffc800';" onmouseout="this.style.color='black';"
-			onclick="location.href='QnABoard'">되돌아가기</button>
-	</div>
+<input type="hidden" class="mailForm" name="memberId" id="memberId" value="${memberId}">
+<input type="hidden" name="grade" id="grade" value="${grade}">
+
+<div class="int-area">
+<input type="text" class="mailForm" name="qnaBoardTitle" id="qnaBoardTitle" maxlength='50'
+       placeholder="문의 제목" autocomplete="off" required>
+</div>
+<div class="text-area">
+<p><textarea  class="textForm" name="qnaBoardContents" id="qnaBoardContents" maxlength='4000'
+     placeholder="문의 내용을 입력해주세요.."></textarea></p>
+</div>    
+
+
+<div style="position: absolute; right: 370px; bottom: -40px;">
+<button type="submit" class="btn-warning">작성하기</button>
+<button type="button" class="btn-warning" onmouseover="this.style.color='#ffc800';" onmouseout="this.style.color='black';"
+	onclick="location.href='QnABoard'">되돌아가기</button>
+</div>
 </form>
 
 </body>
