@@ -41,8 +41,7 @@
 			
 			var pay = confirm("[안내] 지원을 진행하시겠습니까?");
 			
-			if(pay ==true){
-				alert('[안내] 지원이 성공적으로 처리되었습니다.');
+			if(pay ==true){		
 				$('#applyForm').submit();
 				
 			}else{
@@ -75,8 +74,7 @@
 			var pay = confirm("[안내] 결제를 진행하시겠습니까?");
 			
 			if(pay ==true){
-				alert('결제를 시작합니다.');
-				
+			
 				IMP.init('imp44190159');
 				IMP.request_pay({
 				    pg : 'kcp',
@@ -137,10 +135,18 @@
 							
 						    <div class="form-group">
 						      <input type="text" class="form-control" id="exampleInputTitle" aria-describedby="title" placeholder="${list.title }"disabled>
-						    	
+						      	
 						    	<!-- 글번호 -->
-						    	<input type="hidden" id="recruit_num" name="recruit_num" value="${list.recruit_num }">
-						    	<input type="hidden" id="memberId" name="memberId" value="${list.memberId }">
+						    	<input type="hidden" id="recruit_num" name="recruit_num" value="${list.recruit_num }">		   
+						    	
+						    	<c:choose>
+	                                    <c:when  test="${list.pay_check eq 'y'}">
+						    			<input type="hidden" id="pay_check" name="pay_check" value="y">		   
+										</c:when>
+										 <c:otherwise>
+										<input type="hidden" id="pay_check" name="pay_check" value="n">		  
+										</c:otherwise>						    
+								</c:choose>						    
 						    </div>
 									
 						    <div class="form-group">
@@ -187,20 +193,31 @@
 						    
 						    <div class="form-group">
 						      <label for="exampleTextarea" class="form-label mt-4">자기소개</label>
-						      <textarea class="form-control" id="message" name="message" placeholder="자유롭게 자신을 소개해주세요." rows="3" maxlength="30" required></textarea>
+						      <textarea class="form-control" id="message" name="message" placeholder="자유롭게 자신을 소개해주세요." rows="3" maxlength="25" required></textarea>
 							   
 						    </div>
 							<br>			
-						  <div class="form-group">
-						  	 <label for="pay" class="form-label mt-4">최종 결제 금액</label>
-						      <input type="text" class="form-control" id="pay" aria-describedby="pay" placeholder="${list.pay_amount }"disabled>
-						    </div>  
+								<c:if test="${ list.pay_check == 'y'}">
+								
+								  <div class="form-group">
+								  	 <label for="pay" class="form-label mt-4">최종 결제 금액</label>
+								      <input type="text" class="form-control" id="pay_amount" aria-describedby="pay" placeholder="${list.pay_amount }"disabled>
+								    </div>  
+						    	</c:if>
+						    	
+						    	<c:if test="${ list.pay_check == 'Y'}">
+								
+								  <div class="form-group">
+								  	 <label for="pay" class="form-label mt-4">최종 결제 금액</label>
+								      <input type="text" class="form-control" id="pay_amount" aria-describedby="pay" placeholder="${list.pay_amount }"disabled>
+								    </div>  
+						    	</c:if>
 								<br>
 							<br>
 							<div class="justify-content-center text-center">
 							
 							<c:choose>
-	                                    <c:when  test="${list.pay_check eq 'y'}">
+	                                    <c:when  test="${list.pay_check == 'y'}">
 	                                     <button type="button" class="btn btn-warning" onclick="applyPay();">결제</button>
 	                                    </c:when>
 	                                    

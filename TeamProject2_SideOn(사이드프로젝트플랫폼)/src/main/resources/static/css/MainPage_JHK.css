@@ -1,9 +1,17 @@
 @charset "UTF-8";
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-.SideOnExplainImg{
-    width: 1145px;
-    height: 564px;
+.mastheadButton {
+	position: absolute;
+	width: 184px;
+	height: 61px;
+	left: 80px;
+	top: 540px;	
 }
+
+.SideOnExplainImg {
+	margin-left:-100px;
+}
+
 .serviceImg{
     width: 130px;
     height: 130px;
@@ -12,12 +20,13 @@
 .service-section {
     background: #FAFAFA;
 }
+
 .logoLocation {
     position: absolute;
     top: 600px;
-    right:100px;
-    
+    right:100px;  
 }
+
 .JoinButton {
     position: absolute;
     text-decoration:none;
@@ -35,7 +44,7 @@
     border-radius: 15px;    
 }
 
-.head-subheading {
+.head-subheading1 {
     position: absolute;
     width: 1174px;
     height: 112px;
@@ -44,8 +53,8 @@
     font-family: Pretendard;
     font-style: normal;
     font-weight: bold;
-    font-size: 80px;
-    line-height: 96px;
+    font-size: 60px;
+    line-height: 72px;
     display: flex;
     align-items: center;
     color: #FFFFFF;
@@ -53,15 +62,31 @@
 
 .head-subheading2 {
     position: absolute;
+    width: 1174px;
+    height: 265px;
+    left: 80px;
+    top: 200px;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 72px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+}
+
+.head-subheading3 {
+    position: absolute;
     width: 1087px;
-    height: 89px;
+    height: 150px;
     left: 80px;
     top: 330px;
     font-family: Pretendard;
     font-style: normal;
     font-weight: bold;
-    font-size: 80px;
-    line-height: 96px;
+    font-size: 32px;
+    line-height: 38px;
     display: flex;
     align-items: center;
     color: #FFFFFF;

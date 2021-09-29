@@ -43,6 +43,8 @@ public class RecruitBoard {
 		/** 숨김 체크*/
 		private String visible_check;
 		
+		private String status;
+		
 		/** 모집 분야 */
 		private int Front;
 		private int Back;

@@ -11,6 +11,8 @@ create table member (
     reward varchar2(50),
     CONSTRAINT PK_member PRIMARY KEY (memberId)
     );
+    
+    
 
 -- <Table : 파일>
 CREATE TABLE MP_FILE
@@ -66,17 +68,8 @@ CREATE SEQUENCE Recruit_SEQ
 START WITH 1
 INCREMENT BY 1;
 
-CREATE OR REPLACE TRIGGER Recruit_AI_TRG
-BEFORE INSERT ON Recruit 
-REFERENCING NEW AS NEW FOR EACH ROW 
-BEGIN 
-    SELECT Recruit_SEQ.NEXTVAL
-    INTO :NEW.Recruit_num
-    FROM DUAL;
-END;
 
-DROP TRIGGER Recruit_AI_TRG;
-DROP SEQUENCE Recruit_SEQ;
+--DROP SEQUENCE Recruit_SEQ;
 -- <Table & Sequence : 지원>
 CREATE TABLE Apply
 (
@@ -86,6 +79,7 @@ CREATE TABLE Apply
     message         VARCHAR2(60)    NULL, 
     Recruit_num     NUMBER          NOT NULL, 
     join_yn         VARCHAR2(5)     NOT NULL, 
+    pay_check        VARCHAR2(5)       NULL, 
     payment_date    VARCHAR2(30)    NULL, 
     CONSTRAINT PK_Apply PRIMARY KEY (apply_num)
 );
@@ -93,15 +87,6 @@ CREATE TABLE Apply
 CREATE SEQUENCE Apply_SEQ
 START WITH 1
 INCREMENT BY 1;
-
-CREATE OR REPLACE TRIGGER Apply_AI_TRG
-BEFORE INSERT ON Apply 
-REFERENCING NEW AS NEW FOR EACH ROW 
-BEGIN 
-    SELECT Apply_SEQ.NEXTVAL
-    INTO :NEW.apply_num
-    FROM DUAL;
-END;
 
 --DROP TRIGGER Apply_AI_TRG;
 
@@ -131,6 +116,38 @@ ALTER TABLE reward
 
 ALTER TABLE reward
     ADD CONSTRAINT FK_reward_apply_num_Apply_appl FOREIGN KEY (apply_num)
+        REFERENCES Apply (apply_num);
+
+
+-- <Table & Sequence > 지원 카운트 테이블 
+CREATE TABLE CountCheck
+(
+    count_num      NUMBER    NOT NULL, 
+    Recruit_num    NUMBER    NULL, 
+    apply_num      NUMBER    NULL, 
+    Front          NUMBER    NULL, 
+    Back           NUMBER    NULL, 
+    aos            NUMBER    NULL, 
+    ios            NUMBER    NULL, 
+    uxui           NUMBER    NULL, 
+    plan           NUMBER    NULL, 
+    pm             NUMBER    NULL, 
+     PRIMARY KEY (count_num)
+);
+
+CREATE SEQUENCE CountCheck_SEQ
+START WITH 1
+INCREMENT BY 1
+
+--DROP SEQUENCE CountCheck_SEQ;
+
+
+ALTER TABLE CountCheck
+    ADD CONSTRAINT FK_CountCheck_Recruit_num_Recr FOREIGN KEY (Recruit_num)
+        REFERENCES Recruit (Recruit_num);
+
+ALTER TABLE CountCheck
+    ADD CONSTRAINT FK_CountCheck_apply_num_Apply_ FOREIGN KEY (apply_num)
         REFERENCES Apply (apply_num);
 --===================기초 테이블&시퀀스 생성 완료 =====================
 

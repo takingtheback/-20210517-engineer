@@ -70,15 +70,16 @@
                 						<!-- 
                 							<th style="background-color: #eeeeee;">내용</th>
                 						 -->
-                							<td colspan="6" style="background-color:#fff; text-align: center;">${dto.noticeContent}</td>
+                							<td colspan="6" style="background-color:#fff; text-align: center; height: 350px;">${dto.noticeContent}</td>
                 						</tr>
                 					</tbody>
                 				</table>
+                			</div>
                 				<button onclick="history.back()" type="button" class="btn btn-warning" style="width: 100px; height: 35px;">뒤로가기</button>
                 				&nbsp;&nbsp;
                 				<!-- Small modal -->
 								<button type="button" class="btn btn-danger" style="width: 80px; height: 35px;" data-toggle="modal" data-target=".bs-example-modal-lg">신고</button>
-                			</div>
+								<a href="../notice/deleteNoticeDetail?noticeNo=${param.noticeNo}" type="post" class="btn btn-dark" style="width: 80px; height: 35px; float: right;">삭제</a>
                 		</div>
                 	</div>
                 	

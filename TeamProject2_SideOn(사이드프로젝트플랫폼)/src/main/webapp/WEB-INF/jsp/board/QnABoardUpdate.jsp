@@ -29,27 +29,25 @@
 <form class="formArea" action="/board/QnAUpdate" method="post">
 
 	<div class="Chat_explain"> 
-	작성자 : ${memberId}<br> 
-	수정할 작성글: ${dto.qnaBoardNo}
-	</div>   
-<input type="hidden" class="mailForm" name="memberId" id="memberId" value="${memberId}">
-<input type="hidden"name="qnaBoardNo" id="qnaBoardNo" value="${dto.qnaBoardNo}">
-
-<div class="int-area">
-<input type="text" class="mailForm" name="qnaBoardTitle" id="qnaBoardTitle" value="${dto.qnaBoardTitle}"
-       placeholder="수정할 문의제목" autocomplete="off" required>
-</div>
-<div class="text-area">
-<p><textarea class="textForm" name="qnaBoardContents" id="qnaBoardContents" 
-     placeholder="수정할 문의내용을 입력해주세요..">${dto.qnaBoardContents}</textarea></p>
-</div>    
-
-<div style="position: absolute; right: 370px; bottom: -40px;">
-
-<button type="submit" class="btn-warning">수정하기</button>
-<button type="button" class="btn-warning" onmouseover="this.style.color='#ffc800';" onmouseout="this.style.color='black';"
-	onclick="location.href='QnABoard'">되돌아가기</button>
-</div>
+		작성자 : ${memberId}<br> 
+		수정할 작성글: ${dto.qnaBoardNo}
+		</div>   
+			<input type="hidden" class="mailForm" name="memberId" id="memberId" value="${memberId}">
+			<input type="hidden"name="qnaBoardNo" id="qnaBoardNo" value="${dto.qnaBoardNo}">
+		
+		<div class="int-area">
+			<input type="text" class="mailForm" name="qnaBoardTitle" id="qnaBoardTitle" value="${dto.qnaBoardTitle}"
+			       placeholder="수정할 문의제목" autocomplete="off" required>
+		</div>
+		<div class="text-area">
+			<p><textarea class="textForm" name="qnaBoardContents" id="qnaBoardContents" 
+			     placeholder="수정할 문의내용을 입력해주세요..">${dto.qnaBoardContents}</textarea></p>
+		</div>    
+			<div style="position: absolute; right: 370px; bottom: -40px;">
+			<button type="submit" class="btn-warning">수정하기</button>
+			<button type="button" class="btn-warning" onmouseover="this.style.color='#ffc800';" onmouseout="this.style.color='black';"
+				onclick="location.href='QnABoard'">되돌아가기</button>
+	</div>
 </form>
 
 </body>

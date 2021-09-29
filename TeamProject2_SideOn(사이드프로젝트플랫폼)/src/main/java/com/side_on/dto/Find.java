@@ -11,7 +11,8 @@
  @AllArgsConstructor
  public class Find {
  	
- 	
+	private int find_no;
+
  	private String find_date;
  	
  	private String find_title;
@@ -26,4 +27,8 @@
  	
  	private String find_content;
  	
+ 	// member 연결
+ 	private String memberId;
+ 	
+ 	private String grade;
  }

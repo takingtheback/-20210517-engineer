@@ -73,8 +73,8 @@
                 					</c:forEach>
                 					</tbody>
                 				</table>
-                			<a href="../notice/adminNoticeForm" class="btn btn-warning" style="width: 100px; height: 35px;">글쓰기</a>
                 			</div>
+                			<a href="../notice/adminNoticeForm" class="btn btn-warning" style="width: 100px; height: 35px; float: right;">글쓰기</a>
                 		</div>
                 	</div>
                 	

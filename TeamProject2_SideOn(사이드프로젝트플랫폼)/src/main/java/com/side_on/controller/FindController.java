@@ -1,19 +1,16 @@
 package com.side_on.controller;
 
-import java.util.List;
-
-
-import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
+import com.side_on.dto.Criteria;
 import com.side_on.dto.Find;
+import com.side_on.dto.PageMaker;
 import com.side_on.service.FindService;
 
 
@@ -30,78 +27,67 @@ public class FindController {
 	
 	/** 목록 페이지 */
 	@RequestMapping("/find/list")
-	public String FindMemberList(Model model, HttpSession session) {
+	public String FindMemberList(Model model) {
 		log.info("### findMember List :: ");
-		List<Find> list = findService.FindMemberList();
-		model.addAttribute("list", list);
+		
+		ArrayList<Find> find = findService.findMemberList();
+		
+		model.addAttribute("find", find);
+		
 		return "find/list";
 	}
 	
-	/** 글 작성 페이지 
-	@RequestMapping("/find/form")
-	public String FindMemberForm() {
-		return "find/form";
-	}
-	*/
-	
-	/** 글 상세 페이지
-	@RequestMapping("/find/detail")
-	public String FindMemberDetail() {
-		return "find/detail";
-	}
-	*/
-	
 	/** 게시글 상세조회 화면  */
 	@RequestMapping("/find/detail")
-	public String FindMemberDetail(String find_writer, Model model) {
+	public String FindMemberDetail(int find_no, Model model) {
 		log.info("### FindMemberDetail :: ");
 		
-		Find dto = findService.FindMemberDetail(find_writer);
+		Find dto = findService.findMemberDetail(find_no);
 		
 		model.addAttribute("dto", dto);
 		return "find/detail";
 	}
 	
 	/** 게시글 삭제 */
-	@RequestMapping("/find/detail/delete")
-	public String FindMemberDelete(String find_writer, Model model) {
+	@RequestMapping("/find/delete")
+	public String FindMemberDelete(int find_no, Model model) {
 		log.info("### FindMember Delete :: ");
-		int result = findService.FindMemberDelete(find_writer);
+		int result = findService.findMemberDelete(find_no);
 		if (result == 1) {
 			return "find/deleteDone";
 		} else {
-			model.addAttribute("message", "삭제되지 않았습니다. 다시 확인해주세요.");
-			return "find/error";
+			return "find/detail";
 		}
 	}
 	
 	/** 게시글 삭제 후 이동 페이지 */
-	@RequestMapping("/board/detail/deleteDone")
+	@RequestMapping("/find/deleteDone")
 	public String DeleteDone() {
 		return "find/deleteDone";
 	}
 	
 	
 		
-	/** 게시글 수정화면 
-	@RequestMapping("/find/detail/update")
-	public String FindMemberUpdate(String find_writer, Model model) {
+	/** 게시글 수정화면 */
+	@RequestMapping("/find/updateForm")
+	public String FindMemberUpdate(int find_no, Model model) {
 		log.debug("### FindMember Update :: ");
-		Find dto = findService.FindMemberDetail(find_writer);
+		Find dto = findService.findMemberDetail(find_no);
 		model.addAttribute("dto", dto);
-		return "find/form";
+		return "find/updateForm";
 	}
-	*/
+	
 	
 	/** 게시글 수정 */
-	@RequestMapping("/find/detail/update")
+	@RequestMapping("/find/update")
 	public String FindMemberUpdate(Find dto, Model model) {
 			int result = findService.updateFindMember(dto);
 			if (result == 1) {
-				return "find/detail";
+				return "find/formDone";
 			} else {
 				model.addAttribute("message", "수정 실패");
-				return "find/error";
+				log.debug("### error :: " + result);
+				return "find/detail";
 			}
 		}
 	

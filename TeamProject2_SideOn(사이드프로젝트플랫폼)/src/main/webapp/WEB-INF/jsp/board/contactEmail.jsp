@@ -26,28 +26,28 @@
  	</a>
 </header>
 <div style="margin-top:20px;" class="int-area">
-<input type="text" class="mailForm" name="email" id="email"
-       placeholder="답변받으실 이메일을 입력해주세요." autocomplete="off" required>
+	<input type="text" class="mailForm" name="email" id="email"
+	       placeholder="답변받으실 이메일을 입력해주세요." autocomplete="off" required>
 
 </div>
 <div class="int-area">
-<input type="text" class="mailForm" name="title" id="title"
-       placeholder="문의 제목을 입력해주세요." autocomplete="off" required>
+	<input type="text" class="mailForm" name="title" id="title"
+	       placeholder="문의 제목을 입력해주세요." autocomplete="off" required>
 </div>
 <div class="int-area">
-<input type="text" class="mailForm" name="mobile" id="mobile"
-       placeholder="연락처를 입력해주세요." autocomplete="off" required>
+	<input type="text" class="mailForm" name="mobile" id="mobile"
+	       placeholder="연락처를 입력해주세요." autocomplete="off" required>
 </div>
 <div class="text-area">
-<p><textarea class="textForm" name="contents" id="contents"
-     placeholder="문의 내용을 입력해주세요."></textarea></p>
+	<p><textarea class="textForm" name="contents" id="contents"
+	     placeholder="문의 내용을 입력해주세요."></textarea></p>
 </div>    
 
 
-<div style="position: absolute; right: 370px; bottom: -40px;">
-<button type="button" class="btn-warning" onclick="sendMail();">문의하기</button>
-<button type="button" class="btn-warning" onmouseover="this.style.color='#ffc800';" onmouseout="this.style.color='black';"
-	onclick="location.href='FaQBoard'">되돌아가기</button>
+<div style="position: absolute; right: 350px; bottom: -40px;">
+	<button type="button" class="btn-warning" onclick="sendMail();">문의하기</button>
+	<button type="button" class="btn-warning" onmouseover="this.style.color='#ffc800';" onmouseout="this.style.color='black';"
+		onclick="location.href='FaQBoard'">되돌아가기</button>
 </div>
 
 </body>

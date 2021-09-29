@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en" style="background-color: #FFD026">
 
@@ -24,7 +26,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome!</h1>
                                     </div>
-                                    <form class="user" action="login">
+                                    <form class="user" action="login" method="post">
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user"
                                                 id="memberId" name="memberId" aria-describedby="emailHelp"
@@ -44,13 +46,11 @@
                                         <input type="submit" value="Login" class="btn btn-primary btn-user btn-block">
                                         
                                         <hr>
-                                        <a href="index.html" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Login with Google
-                                        </a>
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password">Forgot your ID or PW?</a>
+                                       <a class="small" href="/member/findID">아이디 찾기</a>
+                                         <a class="small" href="/member/findPw">비밀번호 찾기</a>
                                     </div>
                                     <div class="text-center">
                                         <a class="small" href="register">Create an Account!</a>

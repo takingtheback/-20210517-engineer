@@ -11,12 +11,13 @@ import com.side_on.handler.SocketHandler;
 @Configuration
 @EnableWebSocket
 public class WebSocketConfig implements WebSocketConfigurer{
-
+	
 	@Autowired
 	SocketHandler socketHandler;
 	
+	
 	@Override
 	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-		registry.addHandler(socketHandler, "/chating");
+		registry.addHandler(socketHandler, "/chating/{roomNumber}");
 	}
 }

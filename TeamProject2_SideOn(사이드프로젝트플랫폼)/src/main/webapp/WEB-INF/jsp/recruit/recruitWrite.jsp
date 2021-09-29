@@ -307,7 +307,7 @@
             <div class="form-group row" >
 				    <label for="title" class="col-sm-2 col-form-label col-form-label-lg">글 제목</label>
 				    <div class="col-sm-10">
-				      <input type="text" class="form-control form-control-lg" id="title" name="title" placeholder="글 제목을 입력해주세요." maxlength="30">
+				      <input type="text" class="form-control form-control-lg" id="title" name="title" placeholder="글 제목을 입력해주세요." maxlength="25">
 				    </div>
 			 </div>
 			 </div>
@@ -317,16 +317,12 @@
 	<div class="container emp-profile" style="font-family: 'Noto Sans KR', sans-serif;">
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="profile-img">
-                            <img src="../img/bear2.jpg" alt=""/>
-                            <div class="file btn btn-lg btn-primary">
-                                대표 사진 선택
-                                <input type="file" name="file" id = "file" accept="image/*"  /> 
-                            </div>
+                         <div class="profile-img">
+                           	 <img class="img-fluid"  src="../img/user.png" alt="..." />
                         </div>
                         
                      <div >
-                  		<h3 class="center">memberId 님</h3>    
+                  		<h3 class="center">${memberId }님</h3>    
                   		<br>
                   				
 							<!-- Button trigger modal -->
@@ -356,12 +352,21 @@
 								        <p>
 										예비 팀원분들이 지원을 고민할 수 있는 정도의 합리적인 가격으로 정할 경우 지원률이 쑥쑥 올라갈 거예요!<br>
 										리더님의 역량, 경험, 경력을 자세하게 적어 어필하는 것도 중요합니다.
+										리워드는 결제 금액의 5% 제외한 금액으로 관리자가 결제 이벤트 발생 시 일괄 처리합니다. 
 								        </p>
+								        
+								        <h5>5. 프로젝트의 최대 인원수는 10명 입니다. </h5>
+								        <p>
+										팀원들 간의 적극적이고 원활한 의사소통을 위해 최대 인원 수를 10명을 설정하였습니다.
+								        </p>
+								        
+								        <br>
+								        <h5>해당 글을 작성한 회원은 위의 내용에 동의한다고 간주합니다.</h5>
+								       
 								      </div>
 								      
 								      <div class="modal-footer">
-								        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-								        <button type="button" class="btn btn-primary">Understood</button>
+								        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
 								      </div>
 								    </div>
 								  </div>

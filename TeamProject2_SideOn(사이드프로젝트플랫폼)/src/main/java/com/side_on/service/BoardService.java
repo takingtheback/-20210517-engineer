@@ -24,21 +24,34 @@ public class BoardService {
 	private BoardDao boardDao;
 
 
-	/** 게시글 전체조회 */
+	/**
+	 * 게시글 전체조회
+	 * @return selectQnABoardList
+	 */
 	public List<QnABoard> QnABoardList() {
 		log.debug("### BoardService");
 		return boardDao.selectQnABoardList();
 	}
 
-	/** 게시글 상세조회 
-	 *  문의글 조회수 증가 
+	
+	/**
+	 * 2가지 기능 순차실행
+	 * 게시글 상세조회 
+	 * 문의글 조회수 증가 
+	 * @param qnaBoardNo
+	 * @return selectQnABoardDetail
 	 */
 	public QnABoard QnABoardDetail(int qnaBoardNo) {
 		boardDao.updateQnABoardViews(qnaBoardNo);
 		return boardDao.selectQnABoardDetail(qnaBoardNo);
 	}
 
-	/** 게시글 작성 */
+	
+	/**
+	 * 게시글 작성
+	 * @param dto
+	 * @return result
+	 */ 
 	public int addQnABoard(QnABoard dto) {
 		dto.setQnaBoardDate(Utility.getCurrentDate());
 		dto.setQnaBoardViews(0);
@@ -48,21 +61,34 @@ public class BoardService {
 	}
 
 	
-     /** 게시물 총 갯수 */
+	/**
+	 * 게시물 총 갯수
+	 * @param cri 
+	 * @return getTotal
+	 */
 	public int getTotal(Criteria cri) {
 		
 		return boardDao.getTotal(cri);
 	}		
 	
     
-    /** 게시판 목록(페이징 적용) */
+	/**
+	 * 게시판 목록(페이징 적용)
+	 * @param cri
+	 * @return getListPaging
+	 */
 	public List<QnABoard> getListPaging(Criteria cri) {
 		
 		return boardDao.getListPaging(cri);
 		
 	}
 
-	/** 게시글 수정 */
+	
+	/**
+	 * 게시글 수정
+	 * @param dto
+	 * @return result
+	 */
 	public int updateQnABoard(QnABoard dto) {
 		dto.setQnaBoardDate(Utility.getCurrentDate());
 		int result = boardDao.updateQnABoard(dto);
@@ -71,14 +97,23 @@ public class BoardService {
 	}
 
 	
-	/** 게시글 삭제 */
+	/**
+	 * 게시글 삭제
+	 * @param qnaBoardNo
+	 * @return result
+	 */
 	public int QnABoardDelete(int qnaBoardNo) {
 		log.debug("### QnABoardDelete");
 		int result = boardDao.deleteQnABoardList(qnaBoardNo);
 		return result;
 	}
 
-	/** 다중조건 조회 */
+	/**
+	 * 다중조건 조회
+	 * @param condition
+	 * @param keyword
+	 * @return selectQnAListByCondition
+	 */
 	public List<QnABoard> QnAListByCondition(String condition, String keyword) {
 		return boardDao.selectQnAListByCondition(condition, keyword);
 	}

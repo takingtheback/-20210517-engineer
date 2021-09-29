@@ -68,4 +68,11 @@ public class NoticeController {
 			return "notice/adminNoticeForm";
 		}
 	}
+	
+	@RequestMapping("/notice/deleteNoticeDetail")
+	public String deleteNoticeDetail(String noticeNo) {
+		log.debug("[admin] Notice delete no :: " + noticeNo);
+		noticeService.deleteNoticeDetail(noticeNo);
+		return "notice/adminNoticeList";
+	}
 }

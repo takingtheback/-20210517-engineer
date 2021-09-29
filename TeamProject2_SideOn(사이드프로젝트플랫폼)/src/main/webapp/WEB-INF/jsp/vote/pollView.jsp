@@ -33,11 +33,11 @@
 <div align="center"><br/>
 <table border="1" width="800" height="400">
 	<tr>
-		<td colspan="4"><b>Q : <%=plBean.getQuestion()%></b></td>
+		<td colspan="4"><b><font size="5em">Q : <%=plBean.getQuestion()%></font></b></td>
 	</tr>
 	<tr>
-		<td colspan="3"><b>총 투표자 :  <%=sumCnt%> 명</b></td>
-		<td width="40"><b>count(%)</b></td>
+		<td colspan="3"><b><font size="5em">총 투표자 :  <%=sumCnt%> 명</font></b></td>
+		<td width="40"><b><font size="5em">count(%)</font></b></td>
 	</tr>
 	<%
 		Random r =new Random();
@@ -51,18 +51,18 @@
 	<tr>
 		<td width="20" align="center"><%=i+1%></td>
 		<td width="120">
-			<%=item[0]%>
+			<font size="3em"><%=item[0]%></font>
 		</td>
 		<td>
 			<table width="<%=ratio%>"height="15">
 			<tr><td bgcolor="<%=rgb%>"></td></tr>
 			</table>
 		</td>
-		<td width="40"><%=count%>(<%=ratio %>)</td>
+		<td width="40"><font size="3em"><%=count%>(<%=ratio %>)</font></td>
 	</tr>
 	<%}//--for%>
 </table><br>
-<a href="javascript:window.close()" style="color:black;">닫기</a>
+<a href="javascript:window.close()" style="color:black;"><font size="6em">닫기</font></a>
 </div>
 </body>
 </html>

@@ -28,16 +28,16 @@
 	<div align="center">
 		
 		<hr width="600" />
-		<b>설문작성</b>
+		<b><font size="5em">설문작성</font></b>
 		<hr width="600" />
 		<form name="frm" method="post" action="pollInsertProc">
 			<table border="1" width="900" height="500">
 				<tr>
-					<td><b>질문</b></td>
+					<td><b><font size="5em">질문</font></b></td>
 					<td colspan="2"><input name="question" size="65"></td>
 				</tr>
 				<tr>
-					<td rowspan="5"><b>항목</b></td>
+					<td rowspan="5"><b><font size="5em">항목</font></b></td>
 					<%
 						for (int i = 1; i <= 4; i++) {
 							out.println("<td>" + (i * 2 - 1)
@@ -53,10 +53,10 @@
 						}
 					%>
 				<tr>
-					<td>종료일</td>
+					<td><font size="5em">종료일</font></td>
 					<td colspan=2><select name="edateY">
-							<option value="2020">2020
 							<option value="2021">2021
+							<option value="2022">2022
 					</select>년 <select name="edateM">
 							<%
 								for (int i = 1; i <= 12; i++) {
@@ -72,7 +72,7 @@
 					</select>일</td>
 				</tr>
 				<tr>
-					<td>복수투표</td>
+					<td><font size="5em">복수투표</font></td>
 					<td colspan=2>
 						<input type="radio" name="type" value="1" checked>yes 
 						<input type="radio" name="type" value="0">no
@@ -80,9 +80,9 @@
 				</tr>
 				<tr>
 					<td colspan=3>
-					<button type="submit" class="btn btn-warning" onclick="send()">작성하기</button>
-					<button type="button"  class="btn btn-danger" onclick="location.href='/vote/pollInsert'">다시쓰기</button>
-					<button type="button" class="btn btn-info" onClick="javascript:location.href='pollList'">리스트</button>
+					<button type="submit" style="WIDTH:100pt; HEIGHT:40pt" class="btn btn-warning" onclick="send()"><font size="5em">작성하기</font></button>
+					<button type="button"  style="WIDTH:100pt; HEIGHT:40pt" class="btn btn-danger" onclick="location.href='/vote/pollInsert'"><font size="5em">다시쓰기</font></button>
+					<button type="button" style="WIDTH:100pt; HEIGHT:40pt" class="btn btn-info" onClick="javascript:location.href='pollList'"><font size="5em">리스트</font></button>
 					</td>
 				</tr>
 			</table>

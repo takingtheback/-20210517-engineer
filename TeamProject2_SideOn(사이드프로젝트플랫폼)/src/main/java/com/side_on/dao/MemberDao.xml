@@ -40,6 +40,8 @@
   	        update member set member_pw=#{memberPw}, email=#{email}, name=#{name}, mobile=#{mobile} where member_id=#{memberId}
         </update>
 	
+	
+	
 </mapper>
 
 

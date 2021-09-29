@@ -111,6 +111,13 @@
     <version>3.11</version>
 </dependency>
 
+<!-- 핸드폰인증 -->
+ <dependency>
+    <groupId>net.nurigo</groupId>
+    <artifactId>javaSDK</artifactId>
+    <version>2.2</version>
+  </dependency>
+  
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>

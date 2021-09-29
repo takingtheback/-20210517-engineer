@@ -34,8 +34,8 @@
                 	<!-- content header 제목 -->
                 	<div class="card-header py-3">
                 	REST LIST
+                	<a data-toggle="modal" data-target="#restModal" style="float: right;"><i class="fas fa-fw fa-cog"></i></a>
                 	</div>
-                	
                 	<!-- content body 내용 -->
                 	<div class="card-body">
                 		<div class="container">
@@ -53,8 +53,6 @@
                 							<th style="background-color: #eeeeee; text-align: center;">신고접수</th>                							 
                 							<th style="background-color: #eeeeee; text-align: center;">신고처리</th>                							 
                 							<th style="background-color: #eeeeee; text-align: center;">처리상태</th>
-                							<th style="background-color: #eeeeee; text-align: center;">관리</th>
-                							
                 						</tr>
                 					</thead>
                 					<tbody>
@@ -66,14 +64,12 @@
 	                						<th>${dto.reason}</th>
 	                						<th>${dto.restEnroll}</th>
 	                						<th>${dto.restConfirm}</th>
-	                						<th>
+	                						<th id="restCheck">
 	                							<c:choose>
 	                								<c:when test="${dto.restCheck eq 'F'}">처리요청</c:when>
 	                								<c:when test="${dto.restCheck eq 'T'}">처리완료</c:when>
 	                							</c:choose>
 	                						</th>
-	                						<!-- Modal Open 버튼 -->
-	                						<th><a data-toggle="modal" data-target=".bs-example-modal-sm"><i class="fas fa-fw fa-cog"></i></a></th>
 	                					</tr>
                 					</c:forEach>
                 					</tbody>
@@ -82,11 +78,6 @@
                 		</div>
                 	</div>
                 	
-                    <!-- Page Heading -->
-                    <!-- 
-                    <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
-                     -->
-
                 </div>
                 <!-- /.container-fluid -->
 

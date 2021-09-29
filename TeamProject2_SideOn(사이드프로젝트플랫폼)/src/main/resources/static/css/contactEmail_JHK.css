@@ -11,17 +11,14 @@
     width: 1177px;
     height: 150px;
     margin: auto;
-    margin-top: 120px;
-   
-    
+    margin-top: 120px;   
 }
 
 .Chat_title {
     font-family:'Pretendard'; 
     font-size: 36px;
     margin-left: 24px;
-    margin-right: -4px;
-    
+    margin-right: -4px;   
 }
 
 .Chat_title img {
@@ -57,8 +54,7 @@ hr {
     height: 60px;
     border: 1px solid #E0E0E0;
     box-sizing: border-box;
-    border-radius: 8px;
-    
+    border-radius: 8px;  
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -70,18 +66,17 @@ hr {
 
 .text-area {
     width: 1184px;
-    height: 398px;
+    height: 350px;
     margin: auto;
     background: #F6F6F6; 
     resize:none;
-    
 }
 
 textarea {
     font-family:'Pretendard'; 
     font-size: 18px;
     width: 1184px;
-    height: 398px;
+    height: 350px;
     padding: 37px;
     box-sizing: border-box;
     border-radius: 5px;
@@ -99,6 +94,7 @@ textarea {
 .btn-area {
     position: relative;
     margin-top: 10px;
+    margin-bottom: 50px;
     margin: auto;
     text-align: center;
     width: 1184px;

@@ -31,6 +31,7 @@ public interface MemberDao {
 	/** 회원탈퇴 */
 	public void deleteMember(String memberId, String memberPw);
 
+	/** 회원가입 */
 	public int insertMember(Member dto);
 	
 	/** 내정보 조회 */

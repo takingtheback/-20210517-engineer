@@ -126,7 +126,9 @@
 					<div id="notfound">
 						<div class="notfound">
 							<div class="notfound-404"></div>
-							<h1 >오류 제목</h1>
+								<c:if test="${not empty title}">
+								<h1 >${title}</h1>
+								</c:if>
 							<c:if test="${not empty message}">
 								${message}
 							</c:if>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+  		<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<title>로그인|오늘뭐듣지?</title>
+		
+        <!-- css : external : css_JHK.css -->
+        <link type="text/css" rel="stylesheet" href="css/css_JHK.css">
+        
+        <!-- js : external  : js_logIn_JHK.js 
+        <script src="js_logIn_JHK.js"></script>
+        -->
+        
+        <!-- js : internal  : js_logIn_JHK.js -->
+        <script type="text/javascript">
+        
+        /* window 호출 한번만 */
+        window.onload = function() {
+		  initForm();
+	    }
+        /* 폼 초기화 함수 */
+	    function initForm() {
+            document.getElementById("memberId").focus();
+        
+        }
+        
+	    function goIndex() {
+	    	location.href="index.html"; }
+
+        </script>
+	
+	</head>
+	
+	<body class="login-Page">
+        <section class="login-form">
+        <h1>오늘은 뭐 듣지?</h1>
+        <form action="index.html" method="post">
+            
+            <!-- 아이디 -->
+            <div class="int-area">
+            <span id="memberIdMsg"></span>
+            <input type="text" name="memberId" id="memberId"
+                   placeholder=" USER ID" autocomplete="off" required>
+
+
+
+            <!-- 비밀번호 -->   
+            </div>
+            <div class="int-area">
+            <span id="memberPwMsg"></span>   
+            <input type="password" name="memberPw" id="memberPw"
+                placeholder=" PASSWORD" autocomplete="off" required>
+            
+            <!-- 로그인 --> 
+            </div>
+            <div class="btn-area">
+            <button type="submit">LOGIN</button>
+            </div>
+            </form>
+                                  
+            <!-- 아이디 비밀번호찾기 --> 
+            <div class="caption">
+            <a href="findId.html"> 아이디</a>
+            <span class="span1">/ </span>    
+            <span class="span1">
+            <a href="FindMemberPw.html">비밀번호 찾기</a></span>    
+            </div>
+            
+            <!--  카카오 로그인 --> 
+            <div class="caption">
+            <a id="custom-login-btn" href="javascript:loginWithKakao()">
+			<img src="img/kakao_login_medium_wide.png" height="50" width="231.25"/>
+			</a>
+			</div>
+             
+          	 <!-- 네이버아이디로로그인 버튼 노출 영역 -->
+			 <div class="caption">
+			 <div id="naver_id_login"></div>
+			 </div>
+			  
+        </section>
+		
+		    
+		<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+		<script type="text/javascript">
+		
+		/* 카카오 로그인 */
+		window.Kakao.init("2d681ebbff382a35fc7708f907548c94");
+		
+		function loginWithKakao() {
+		  Kakao.Auth.login({
+		    success: function(authObj) {
+		      //alert(JSON.stringify(authObj))
+		      goIndex();
+		    },
+		    fail: function(err) {
+		     // alert(JSON.stringify(err))
+		    },
+		  })
+		}
+		
+		//네이버아이디로로그인 버튼 노출 영역 
+		var naver_id_login = new naver_id_login("4OrGPymIJCOVn1IXxbqY", "http://localhost:8070/TodayMusic/index.html");
+	  	var state = naver_id_login.getUniqState();
+	  	naver_id_login.setButton("green", 3,50);
+	  	naver_id_login.setDomain("YOUR_SERVICE_URL");
+	  	naver_id_login.setState(state);
+	  	// naver_id_login.setPopup();
+	  	naver_id_login.init_naver_id_login();
+		
+		</script>
+	 
+	</body>
+
+</html>
+
+

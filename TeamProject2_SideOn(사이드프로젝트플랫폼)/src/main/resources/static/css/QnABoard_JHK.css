@@ -1,5 +1,11 @@
 @charset "UTF-8";
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+.LiveReArea {
+	width: 1100px;
+	margin: auto;
+}
+
 .submit-area {
 	position: absolute; 
 	right: 0px; 
@@ -16,8 +22,7 @@
 	background-color: #E0E0E0;
 }
 
-.pagination {
-	
+.pagination {	
     display: relative;
     padding-left: 0;
     margin-top: 10px;
@@ -110,6 +115,7 @@
     margin: auto;
     margin-top: 100px;
 }
+
 .QnATable {
 	text-align:center;
 	width: 1086px;
@@ -124,6 +130,7 @@
 	text-decoration:none;
 	color:black;
 }
+
 .QnATable a:hover {
 	text-decoration:none;
 	color:#ffc800;
@@ -144,6 +151,7 @@
     box-sizing: border-box;
     border-radius: 8px;
 }
+
 .FAQ_explain {
     font-family:'Pretendard'; 
     font-size: 18px;
@@ -152,6 +160,7 @@
     margin-bottom: 42px;
     color: #8A8A8A;
 }
+
 input[id*="answer"] {
 	display: none;
     margin:auto;
@@ -162,11 +171,9 @@ input[id*="answer"] + label {
     margin-bottom: 8px;
 	display: block;
 	padding: 16px;
-	width:1083px;
-    
+	width:1083px;   
 	border:1px solid #E0E0E0;
-    border-radius: 8px;
-    	
+    border-radius: 8px;  	
 	color:#353535;
 	font-size:20px;
 	background:#ffffff;
@@ -202,7 +209,6 @@ input[id*="answer"] + label + div {
     height: 320px;
     font-size:18px;
     background-color: #E5E5E5;
-
 }
 
 input[id*="answer"] + label + div p {
@@ -241,8 +247,7 @@ input[id*="answer"]:checked + label em {
     margin-left: 20px;
     width: 544px;
     height: 190px;
-    top: 948px;
-    
+    top: 948px;  
 }
 
 .footerTitle {
@@ -265,9 +270,7 @@ input[id*="answer"]:checked + label em {
     font-family:'Pretendard'; 
     font-size: 16px;
     margin-left: 20px;
-    color: #7C7B7B;
-    
-    
+    color: #7C7B7B;   
 }
 
 .footerButton {
@@ -285,11 +288,11 @@ input[id*="answer"]:checked + label em {
     box-sizing: border-box;
     border-radius: 8px;
 }
+
 .WriteButton {
 	position:relative;
     margin-top:-400px;
-    margin-left:927px;
-  	
+    margin-left:927px;  	
     font-family:'Pretendard'; 
     font-size: 16px;
     justify-content: center;
@@ -311,7 +314,7 @@ input[id*="answer"]:checked + label em {
 
 .UpdateButton {
 	position:relative;
-	magin-left:300px;   
+	margin-left:300px;   
     font-family:'Pretendard'; 
     font-size: 16px;
     justify-content: center;
@@ -328,6 +331,7 @@ input[id*="answer"]:checked + label em {
 	border-radius: 15px;
 	height: 250px;
 }
+
 textarea {
 	width:1088px;
 	padding: 10px;

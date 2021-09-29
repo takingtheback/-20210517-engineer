@@ -8,6 +8,26 @@
 <title>프로젝트 모집/지원 | Side-On</title>
  
 <link type="text/css" rel="stylesheet" href="../css/RecruitHome_juri.css">
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    
+			<script type="text/javascript">
+			 function searchCheck() {
+				 var search = document.getElementById('search').value;
+				 
+					if(search.trim() == ""){
+						alert('[안내] 검색어를 입력해주세요');
+						$('#search').focus();			
+						return false;
+					}else if(search.length > 10 ){
+						alert('[안내] 검색어는 10자리 이하로 입력해주세요');
+						$('#search').focus();			
+						return false;
+					}else{
+						$('#searchForm').submit();
+					}
+			}
+			
+			</script>
 
 </head>
 <body>
@@ -30,20 +50,24 @@
 			       	<div class="col-md-6 center" >
 			
 			                <div class="search-container" style="float: left;">
-			                    <form >
-			                      <input type="text" placeholder="Search.." name="search">
-			                      <button type="submit"><i class="fa fa-search"></i></button>
+			                    <form action="/recruitSearch" name="searchForm" id="searchForm">
+			                      <input type="text" placeholder="검색어를 입력하세요" name="search" id="search">
+			                      <button type="button"  onclick="searchCheck();"><i class="fa fa-search"></i></button>
 			                    </form>
 			                  </div>
-			         		<div class="checkbox" style="float: left;">	    
+			         	<!--  	<div class="checkbox" style="float: left;">	    
 								    <label for="check1">모집 중  </label>
 								    <input type="checkbox" name="check1" id="check1" value="1" class="checkbox1">
+							</div> -->
+							
+							<div class="checkbox" style="float: right;">	    
+								  <input type="button" class="btn btn-warning" style= "margin-left:38%;"onclick="location.href='/recruit/recruitWrite'" value="모집 글쓰기">
 							</div>
 							
 							               
-			                 <div style="padding-top: 10%" style="float: left;">
+			        <!--          <div style="padding-top: 10%" style="float: left;">
 			                  	<ul class="tags">
-								  <li><a href="#" class="tag">FrontEnd</a></li>
+								  <li><a href="recruitHome?part=front" class="tag">FrontEnd</a></li>
 								  <li><a href="#" class="tag">BackEnd</a></li>
 								  <li><a href="#" class="tag">AOS</a></li>
 								  <li><a href="#" class="tag">IOS</a></li>
@@ -52,7 +76,7 @@
 								 <li><a href="#" class="tag">기획</a></li>
 								 	<li><a href="#" class="tag">PM</a></li>
 								</ul>
-			                  </div>
+			                  </div> -->
 						</div>
 				</div>
         </section>
@@ -62,7 +86,13 @@
             <div class="container" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
                
                 <div class="row">
-                
+                <c:if test="${empty list}">
+						<c:set var="none" value="검색 결과가 없습니다."></c:set>
+						
+						<h2 class="center" style="margin-top:10%;"><c:out value="${none }" /></h2>
+		
+						<a style="margin-top:10%; color:black;" href="/recruit/recruitHome" class="btn btn-warning" style="color:black;">전으로 돌아가기</a>
+				</c:if>
                 	<c:forEach var="list" items="${list}" varStatus="status"> 
 	                    <div class="col-lg-4 col-sm-6 mb-4">
 	                        <!-- Portfolio item 1-->
@@ -71,7 +101,7 @@
 		                                <div class="portfolio-hover">
 		                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>                     
 		                                </div>
-		                                <img class="img-fluid"  src="../img/bear2.jpg" alt="..." />
+		                                 <img class="img-fluid"  src="../img/team.jpg" alt="..." />
 		                            </a>
 		                            
 		                            <div class="portfolio-caption">

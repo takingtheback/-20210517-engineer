@@ -7,6 +7,22 @@
 <head>
 	<%@ include file="../inc/adminHeadLink.jsp" %>
 	<title>리워드 관리 | Admin </title>
+	
+		<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+	<script>
+	
+		function rewardPay() {
+			var cancel = confirm("[안내] 리워드를 지급하시겠습니까?");
+			
+			if(cancel == true){		
+				alert('[안내] 정상 지급 되었습니다.');
+		    	$('#reward').submit();
+			}else{
+				
+			}
+		}
+	
+	</script>
 </head>
 
 <body id="page-top">
@@ -36,84 +52,7 @@
                     </div>
 
                     <!-- 카드 Row, 방문자수, 신고수, 현재날짜 -->
-                    <div class="row">
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                               하루 결제 건수 
-                                               </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="far fa-meh-blank fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                       <!-- Pending Requests Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                이번 달 결제 건수</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">3,174</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-meh-blank fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                       <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-danger shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                                총 금액</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">3</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-ghost fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                       	</div>
-                       
-                       <!-- Pending Requests Card Example -->
-                        <div class="col-xl-3 col-md-8 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Date</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                            	<c:set var="today" value="<%=new java.util.Date()%>" />
-                                            	<c:set var="date"><fmt:formatDate value="${today}" pattern="yyyy-MM-dd" /></c:set>
-                                            	<c:out value="${date}" />
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+     
                     <!-- Content Row -->
 
                     <div class="row">
@@ -134,27 +73,43 @@
                 								<table class="table" style="text-align: center; border: 1px solid #dddddd;">
                 									<thead>
                 										<tr>
+                											<th style="background-color: #eeeeee; text-align: center;">결제번호 </th>
                 											<th style="background-color: #eeeeee; text-align: center;">글 번호</th>
                 											<th style="background-color: #eeeeee; text-align: center;">리더</th>
-                											<th style="background-color: #eeeeee; text-align: center;">금액</th>
                 											<th style="background-color: #eeeeee; text-align: center;">결제자</th>
+                											<th style="background-color: #eeeeee; text-align: center;">금액</th>
                 											<th style="background-color: #eeeeee; text-align: center;">리워드 상태</th>
-                											<th style="background-color: #eeeeee; text-align: center;">리워드 </th>
                 										</tr>
                 									</thead>
                 									
-                									<tbody>             										
+                									<tbody>  
+  <c:forEach var="admin" items="${reward}">             									           			
+  
+ <form action="/recruit/reward/complete" method="post" name="reward" id="reward">
+  <input type="hidden" name="payment_id" id="payment_id" value="${admin.payment_id}" >
+    <input type="hidden" name="recruit_num" id="recruit_num" value="${admin.recruit_num}" >
+      <input type="hidden" name="pay_amount" id="pay_amount" value="${admin.pay_amount}" >
+  </form>						
                 											<tr>
-	               												<th>1</th>
-	               												<th>memberId</th>
-	               												<th>80,000</th>
-	               												<th>user01</th>
+                												<th>${admin.payment_id}</th>
+	               												<th>${admin.recruit_num}</th>
+	               												<th>${admin.writer_memberId}</th>
+	               												<th>${admin.apply_memberId}</th>
+	               												<th>${admin.pay_amount}</th>
 	               												<th>  
+	               												<c:if test="${admin.reward_yn == 'y'}">
 	               													<button type="button" class="btn btn-danger" disabled>미지급</button>
+	               													<button type="button" class="btn btn-success" onclick="rewardPay(${admin.pay_amount})">지급하기</button>
+	               												</c:if>
+	               												
+	               												<c:if test="${admin.reward_yn == 'n'}">
 	               													<button type="button" class="btn btn-success" disabled>지급 완료</button>
+	               												</c:if>
 	               												</th>
-	               												<th>  <button type="button" class="btn btn-success">지급하기</button></th>
+		               												
 	               											</tr>
+
+ </c:forEach>              											
                 									</tbody>
                 								</table>
                 							</div>

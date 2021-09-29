@@ -1,0 +1,131 @@
+@charset "UTF-8";
+
+/** 헤더 */
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 75px;
+	padding: 1rem;
+	color: white;
+	background-color: #6495ED;
+	font-weight: bold;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+h1, p {
+	margin: 0;
+}
+
+main {
+	padding: 1rem;
+	height: 100%;
+}
+
+nav span {
+	font-weight: bold;
+	list-style: none;
+}
+
+body {
+	background: white;
+}
+
+body, html {
+	height: 200%;
+}
+
+a {
+	text-decoration: none;
+	color:white;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+/** 마이페이지 */
+ul.mypage_main {
+   list-style:none;
+   }
+ 
+h3 { 
+	padding: 5px 20px 20px 0px;
+	}
+	
+div.mypage_screen {
+	text-align: center;
+	margin: 0px 25px 25px 0px;
+	
+}
+div.myTaste {
+	display: inline-block;
+	text-align: center;
+	margin: 30px 30px 0px 0px;
+	font-weight: bold;
+	font-size: 40px;
+	text-align: center;
+	color: #EFE1CE;
+	background-color:#6495ED;
+	width:50%;
+	height:200px;
+	}
+
+input.btn {
+	text-align: center;
+	width: 120px;
+	height: 25px;
+	background-color: #EFE1CE;
+	border : solid 1px #EFE1CE;
+	color : gray;
+	
+}
+
+textarea.write {
+	text-align: center;
+	margin: 20px 30px 30px 0px;
+}
+
+div.writeLength {
+	text-align: center;
+	color: gray;
+	font-size: 5px;
+}
+
+ul {
+	list-style: none;
+}
+
+ul.mypage_main li {
+	margin: 5% 60% 0 0;
+}
+
+input.btn_write {
+	display: inline-block;
+	text-align: center;
+	margin: 20px 30px 30px 0px;
+	width: 50%;
+	height: 25px;
+	background-color: #EFE1CE;
+	border : solid 1px #EFE1CE;
+	color : gray;
+}
+
+
+/** 추천곡페이지 */
+span.input_1 {
+	display: inline-block;
+	text-align: center;
+	padding-bottom: 10px;
+	
+}
+
+div.btn_review {
+	display: inline-block;
+	text-align: center;
+	margin: 20px 30px 30px 0px;
+}
+

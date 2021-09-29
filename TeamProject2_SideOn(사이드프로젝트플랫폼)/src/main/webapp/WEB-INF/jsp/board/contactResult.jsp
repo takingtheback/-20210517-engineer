@@ -12,7 +12,6 @@
 <section class="Result-form">
 	<h1>메일 발송 완료</h1>
 	<h3>작성해주신 메일로 문의에 답변해드리겠습니다.</h3>
-		
 			<div class="btn-area">
 			<button type="submit" class="btn-warning"
                     onclick="location.href='FaQBoard'">FaQBoard</button>

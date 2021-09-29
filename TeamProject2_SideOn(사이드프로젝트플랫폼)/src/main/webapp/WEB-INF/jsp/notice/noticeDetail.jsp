@@ -41,7 +41,7 @@
 						<tbody>
 							<tr>
 								<td colspan="6"
-									style="background-color: #fff; text-align: center;">${dto.noticeContent}</td>
+									style="background-color: #fff; text-align: center; height: 350px;">${dto.noticeContent}</td>
 							</tr>
 						</tbody>
 					</table>

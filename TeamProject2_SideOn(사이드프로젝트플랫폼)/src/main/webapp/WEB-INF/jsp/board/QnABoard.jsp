@@ -28,31 +28,32 @@
 
 <!-- QnA 게시판 항목 -->
 <div class="QnAForm">
-<table class="QnATable">
-	<tr class="QnATitle">
-		<th>번호</th>
-		<th>문의제목</th>
-		<th>작성자</th>
-		<th>작성일</th>
-		<th>조회수</th>
-	</tr>
-	<c:if test="${not empty message}">
-		<tr>
-			<th colspan=10>${message}</th>
+	<table class="QnATable">
+		<tr class="QnATitle">
+			<th>번호</th>
+			<th>문의제목</th>
+			<th>작성자</th>
+			<th>작성일</th>
+			<th>조회수</th>
 		</tr>
-	</c:if>
-	<c:forEach var="dto" items="${list}" varStatus="status">
-		<tr>
-			<!-- status.index => 0시작, status.count => 1시작 -->
-			<th>${dto.qnaBoardNo}</th>
-			<th onmouseover="this.style.color='#ffc800';" onmouseout="this.style.color='black';">
-			<a href="QnABoardDetail?qnaBoardNo=${dto.qnaBoardNo}">${dto.qnaBoardTitle}</a></th>
-			<th onmouseover="this.style.color='#ffc800';" onmouseout="this.style.color='black';">${dto.memberId}</th>
-			<th>${dto.qnaBoardDate}</th>
-			<th>${dto.qnaBoardViews}</th>
-		</tr>
-	</c:forEach>
-</table>  	          
+		<c:if test="${not empty message}">
+			<tr>
+				<th colspan=10>${message}</th>
+			</tr>
+		</c:if>
+		<c:forEach var="dto" items="${list}" varStatus="status">
+			<tr>
+				<!-- status.index => 0시작, status.count => 1시작 -->
+				<th>${dto.qnaBoardNo}</th>
+				<th onmouseover="this.style.color='#ffc800';" onmouseout="this.style.color='black';">
+				<a href="QnABoardDetail?qnaBoardNo=${dto.qnaBoardNo}">${dto.qnaBoardTitle}</a></th>
+				<th onmouseover="this.style.color='#ffc800';" onmouseout="this.style.color='black';">
+				<a href="/board/QnABoard?pageNum=1&amount=10&keyword=${dto.memberId}&type=W">${dto.memberId}</a></th>
+				<th>${dto.qnaBoardDate}</th>
+				<th>${dto.qnaBoardViews}</th>
+			</tr>
+		</c:forEach>
+	</table>  	          
 
 <!-- 페이징 영역 -->
 <div class="mappingArea">
@@ -80,16 +81,12 @@
     <button type="button" class="btn-warning" onmouseover="this.style.color='#ffc800';" onmouseout="this.style.color='black';"
 	onclick="location.href='QnABoardWrite'">글쓰기</button>
 </div>
-
-
-	
-		
-	<form id="moveForm" method="get">	
-		<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
-		<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
-		<input type="hidden" name="keyword" value="${pageMaker.cri.keyword }">	
-		<input type="hidden" name="type" value="${pageMaker.cri.type }">	
-	</form>
+<form id="moveForm" method="get">	
+	<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
+	<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
+	<input type="hidden" name="keyword" value="${pageMaker.cri.keyword }">	
+	<input type="hidden" name="type" value="${pageMaker.cri.type }">	
+</form>
 <!-- 검색창 -->
 <div class="search_wrap">
 		<div class="search_area">
@@ -105,71 +102,68 @@
 			<button class="btn-warning">Search</button>
 		</div>
 	</div>		    
-
-
 </div>  
 </div> 
 
 
   
 <script>
-let moveForm = $("#moveForm");
-
-$(".pageInfo a").on("click", function(e){
-	e.preventDefault();
-	moveForm.find("input[name='pageNum']").val($(this).attr("href"));
-	moveForm.attr("action", "/board/QnABoard");
-	moveForm.submit();
+	let moveForm = $("#moveForm");
 	
-});	
-
-$(".pagination a").on("click", function(e){
-	e.preventDefault();
-	moveForm.find("input[name='pageNum']").val($(this).attr("href"));
-	moveForm.attr("action", "/board/QnABoard");
-	moveForm.submit();
+	$(".pageInfo a").on("click", function(e){
+		e.preventDefault();
+		moveForm.find("input[name='pageNum']").val($(this).attr("href"));
+		moveForm.attr("action", "/board/QnABoard");
+		moveForm.submit();
+		
+	});	
 	
-});	
-
-$(".search_area button").on("click", function(e){
-    e.preventDefault();
-    let val = $("input[name='keyword']").val();
-    moveForm.find("input[name='keyword']").val(val);
-    moveForm.find("input[name='pageNum']").val(1);
-    moveForm.submit();
-});
-
-
-
-$('#search').keypress(function(event){
-     if ( event.which == 13 ) {
-         $(".search_area button").click();
-         return false;
-     }
-});
-
-$(".search_area button").on("click", function(e){
-	e.preventDefault();
+	$(".pagination a").on("click", function(e){
+		e.preventDefault();
+		moveForm.find("input[name='pageNum']").val($(this).attr("href"));
+		moveForm.attr("action", "/board/QnABoard");
+		moveForm.submit();
+		
+	});	
 	
-	let type = $(".search_area select").val();
-	let keyword = $(".search_area input[name='keyword']").val();
+	$(".search_area button").on("click", function(e){
+	    e.preventDefault();
+	    let val = $("input[name='keyword']").val();
+	    moveForm.find("input[name='keyword']").val(val);
+	    moveForm.find("input[name='pageNum']").val(1);
+	    moveForm.submit();
+	});
 	
-	if(!type){
-		alert("검색 종류를 선택하세요.");
-		return false;
-	}
 	
-	if(!keyword){
-		alert("키워드를 입력하세요.");
-		return false;
-	}		
 	
-	moveForm.find("input[name='type']").val(type);
-	moveForm.find("input[name='keyword']").val(keyword);
-	moveForm.find("input[name='pageNum']").val(1);
-	moveForm.submit();
-});
+	$('#search').keypress(function(event){
+	     if ( event.which == 13 ) {
+	         $(".search_area button").click();
+	         return false;
+	     }
+	});
+	
+	$(".search_area button").on("click", function(e){
+		e.preventDefault();
+		
+		let type = $(".search_area select").val();
+		let keyword = $(".search_area input[name='keyword']").val();
+		
+		if(!type){
+			alert("검색 종류를 선택하세요.");
+			return false;
+		}
+		
+		if(!keyword){
+			alert("키워드를 입력하세요.");
+			return false;
+		}		
+		
+		moveForm.find("input[name='type']").val(type);
+		moveForm.find("input[name='keyword']").val(keyword);
+		moveForm.find("input[name='pageNum']").val(1);
+		moveForm.submit();
+	});
 </script> 
 </body>
-
 </html>
