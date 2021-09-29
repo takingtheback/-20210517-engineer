@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+       <meta charset="UTF-8">
+    <title>노선별 경유정류소 목록</title>
+    <script async src="//jsfiddle.net/jscodedev/ukqqvL9h/1/embed/"></script>
+    <!-- css -->
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/jh.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.js') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+</head>
+<body style="width:80%; text-align:center; margin-left:auto; margin-right:auto;">
+<h3 style="margin-top:30px; display:inline-block; text-align:center;" >{{routeid}} 노선의 경유 정류소</h3>
+<div id="map" style="margin-bottom:10px;width:100%;position:relative;overflow:hidden;width:100%;height:350px;border:10px solid #E4E8EE;border-radius:8px;margin-bottom:10px;"></div>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5a4d02a1d8eaf5daed584823dcae3470&libraries=services"></script>
+<table id="example-table-1" width="100%" border="1" class="table table-bordered table-hover text-center">
+    <tr><th>순번</th><th>정류소 고유번호</th><th>정류소명</th><th>첫차시간</th><th>막차시간</th><th>위치 X</th><th>위치 Y</th><th>진행방향</th></tr>
+{% for s in stList %}
+    <tr>
+        <td>{{s.seq}}</td>
+        <td>{{s.arsId}}</td>
+        <td>{{s.stationNm}}</td>
+        <td>{{s.beginTm}}</td>
+        <td>{{s.lastTm}}</td>
+        <td id="gpsX">{{s.gpsX}}</td>
+        <td id="gpsY">{{s.gpsY}}</td>
+        <td>{{s.direction}}</td>
+    </tr>
+
+{% endfor %}
+</table>
+
+<script>
+
+var Lat = document.getElementById("gpsY").innerText; //위도 37.4996343963
+Lat = Number(Lat);
+var Lng = document.getElementById("gpsX").innerText; //경도 126.8679976691
+Lng = Number(Lng);
+
+var container = document.getElementById('map'), // 지도를 표시할 div
+    option = {
+        center: new kakao.maps.LatLng(Lat, Lng), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+var map = new kakao.maps.Map(container, option); // 지도를 생성합니다
+
+// 마커가 표시될 위치입니다
+var markerPosition  = new kakao.maps.LatLng(Lat, Lng);
+
+// 마커를 생성합니다
+var marker = new kakao.maps.Marker({
+    position: markerPosition
+});
+
+// 마커가 지도 위에 표시되도록 설정합니다
+marker.setMap(map);
+
+</script>
+
+<br>
+<a href="/">되돌아가기</a>
+</body>
+</html>

@@ -1,0 +1,19 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+th {
+    font-family: 'Pretendard';
+    text-align : center;
+    vertical-align : middle;
+}
+
+td {
+    font-family: 'Pretendard';
+    text-align : center;
+    vertical-align : middle;
+
+}
+
+busTitle {
+    font-family: 'Pretendard';
+    font-size: 24px;
+    text-align : center;
+}

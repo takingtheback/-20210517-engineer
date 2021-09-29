@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script async src="//jsfiddle.net/jscodedev/ukqqvL9h/1/embed/"></script>
+
+    <!-- css -->
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/jh.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/sj_nav.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/sj_index.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.js') }}">
+
+</head>
+
+<body style="text-align:center;">
+
+<a href="/"><img src="../../static/img/bus_logo.png" class="logo">
+
+<div class="title" style="margin-top:15px;">
+    <h3>정류소 별 노선첫차/막차 예정시간 목록조회</h3>
+</div>
+
+<table id="example-table-1" width="100%" border="1" class="table table-bordered table-hover text-center"
+style="margin-top:30px; width:80%; text-align:center; margin-left:auto; margin-right:auto;">
+    <tr><th>고유번호</th><th>정류소명</th><th>노선ID</th><th>노선명</th><th>금일첫차시간</th><th>금일막차시간</th></tr>
+{% for t in times %}
+    <tr>
+        <td>{{t.arsId}}</td>
+        <td>{{t.stationNm}}</td>
+        <td>{{t.busRouteId}}</td>
+        <td>{{t.busRouteNm}}</td>
+        <td>{{t.firstBusTm}}</td>
+        <td>{{t.lastBusTm}}</td>
+    </tr>
+{% endfor %}
+</table>
+<a href="/">되돌아가기</a>
+<br><br><br>
+</body>
+</html>

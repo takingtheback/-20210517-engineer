@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>경로</title>
+    <script async src="//jsfiddle.net/jscodedev/ukqqvL9h/1/embed/"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.js') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/jh.css')}}">
+</head>
+<body style="width:80%; text-align:center; margin-left:auto; margin-right:auto;">
+<!-- title -->
+<div class="title" style="margin-top:15px;">
+
+    <h3><b>{{busRouteId}}</b> 노선의 지도상 경로</h3>
+</div>
+
+<!-- 이미지 지도를 표시할 div 입니다 -->
+<div id="map" style="width:100%;height:350px;border:10px solid #E4E8EE;border-radius:8px;margin-bottom:10px;"></div>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5a4d02a1d8eaf5daed584823dcae3470&libraries=services"></script>
+<div class="row">
+
+    <table id="example-table-1" width="100%" border="1" class="table table-bordered table-hover text-center">
+    <tr>
+        <th>순번</th><th>좌표X(WGS84)</th><th>좌표Y(WGS84)</th><th>좌표X(GRS80)</th><th>좌표Y(GRS80)</th>
+    </tr>
+{% for s in stList%}
+    <tr>
+        <td>{{s.no}}</td>
+        <td id="gpsX">{{s.gpsX}}</td>
+        <td id="gpsY">{{s.gpsY}}</td>
+        <td>{{s.posX}}</td>
+        <td>{{s.posY}}</td>
+    </tr>
+{% endfor %}
+</table>
+<a href="/">되돌아가기</a>
+</div>
+
+
+<script>
+var Lat = document.getElementById("gpsY").innerText; //위도 37.4996343963
+Lat = Number(Lat);
+var Lng = document.getElementById("gpsX").innerText; //경도 126.8679976691
+Lng = Number(Lng);
+
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+    mapOption = {
+        center: new kakao.maps.LatLng(Lat, Lng), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+// 마커가 표시될 위치입니다
+var markerPosition  = new kakao.maps.LatLng(Lat, Lng);
+
+// 마커를 생성합니다
+var marker = new kakao.maps.Marker({
+    position: markerPosition
+});
+
+// 마커가 지도 위에 표시되도록 설정합니다
+marker.setMap(map);
+
+// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
+// marker.setMap(null);
+
+</script>
+</body>
+</html>

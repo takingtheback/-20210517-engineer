@@ -1,0 +1,85 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+th {
+    text-align : center;
+}
+
+h1,h2,h3,h4,h5 {
+    font-family: 'Pretendard';
+    text-align : center;
+    vertical-align : middle;
+}
+
+h2.title {
+    margin-top:60px;
+    color:#2C2E2E;
+    font-size:25px;
+}
+
+h3.form-title {
+    margin-top:30px;
+    color:#2C2E2E;
+    font-size:20px;
+    margin-bottom:30px;
+}
+
+h3.form-title-main {
+    margin-top:30px;
+    color:#2C2E2E;
+    font-size:25px;
+}
+
+section.form-section {
+    margin-top:30px;
+    margin-right:auto;
+    margin-left:auto;
+    justify-content: center;
+}
+
+form.search-form {
+    float:left;
+    width:50%;
+    margin-bottom:60px;
+}
+
+form.search-form-main {
+    margin-top: 100px;
+    margin-right:auto;
+    margin-left:auto;
+    width:60%;
+    margin-bottom:60px;
+}
+
+input.search-input {
+    padding: 10px;
+    width: 40%;
+    font-size: 17px;
+    font-family: Raleway;
+    border: 1px solid #59DD98;
+    border-radius: 10px;
+    -webkit-appearance: none
+}
+
+input:focus {
+    border: 1px solid #009346 !important;
+    outline: none
+}
+
+input.invalid {
+    border: 1px solid #e03a0666
+}
+
+h3.form-title {
+    margin-bottom:30px;
+    margin-right:28px;
+}
+
+input.submit-button {
+    background-color: #009346;
+    color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    font-size: 17px;
+    font-family: Raleway;
+    cursor: pointer
+}

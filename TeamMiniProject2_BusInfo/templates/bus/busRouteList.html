@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>노선번호목록</title>
+
+    <!-- css -->
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/jh.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.js') }}">
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/sj_nav.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/sj_index.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+
+</head>
+<body style="width:80%; text-align:center; margin-left:auto; margin-right:auto;">
+
+<a href="/"><img src="../../static/img/bus_logo.png" class="logo"></a>
+<nav>
+    <ul class="nav-container" style="text-align:center;">
+        <li class="nav-item" style="margin-left:20px;"><a href="/station/normalStation">일반 정류소</a></li>
+        <li class="nav-item"><a href="/station/lowStation">교통약자 전용 정류소</a></li>
+        <li class="nav-item"><a href="/station/routeInfo">노선정보</a></li>
+        <li class="nav-item"><a href="/station/stopOverInfo">경유정보</a></li>
+        <li class="nav-item"><a href="/station/IDList">노선ID</a></li>
+        <li class="nav-item"><a href="station/lineNameList">노선명</a></li>
+        <li class="nav-item"><a href="/station/stationIDList">정류소ID</a></li>
+        <li class="nav-item"><a href="/station/stationNameList">정류소명</a></li>
+        <li class="nav-item"> <a href=""></a></li>
+        <li class="nav-item"> <a href=""></a><br/>
+    </ul>
+</nav>
+
+<div class="title" style="margin-top:15px;">
+    <h3><b>{{bus.busRouteNm}}</b> 노선 정보</h3>
+</div>
+
+
+<table id="example-table-1" width="100%" border="1" class="table table-bordered table-hover text-center">
+    <tr><th>노선ID</th><td>{{bus.busRouteId}}</td></tr>
+    <tr><th>노선명</th><td>{{bus.busRouteNm}}</td></tr>
+    <tr><th>노선길이(km)</th><td>{{bus.length}}km</td></tr>
+    <tr><th>기점</th><td>{{bus.stStationNm}}</td></tr>
+    <tr><th>종점</th><td>{{bus.edStationNm}}</td></tr>
+    <tr><th>금일저상첫차시간</th><td>{{bus.firstBusTm}}</td></tr>
+    <tr><th>금일저상막차시간</th><td>{{bus.lastBusTm}}</td></tr>
+    <tr><th>배차간격</th><td>{{bus.term}}분</td></tr>
+    <tr><th>운수회사정보</th><td>{{bus.corpNm}}</td></tr>
+    <tr><th>노선유형</th><td>{{bus.routeType}}버스</td></tr>
+</table>
+<br>
+<a href="/">되돌아가기</a>
+</body>
+</html>
