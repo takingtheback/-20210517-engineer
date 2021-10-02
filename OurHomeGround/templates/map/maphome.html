@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=375195db5ac07f42a08c6c9f33e5f119&libraries=services,clusterer,drawing"></script>
+
+	<!--google font-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+	<title>슬기로운 동네생활 | 우리동네 지도</title>
+	</head>
+	<body>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+		<!--LOGO-->
+		<a class="navbar-brand" href="/">HOME</a>
+		<!--Links-->
+		<div class="container-fluid full-width">
+		<ul class="nav navbar-nav">
+		<li class="nav-item active">
+
+		</li>
+		<li class="nav-item">
+
+		</li>
+
+		</ul>
+		<div>
+		{% if session.flag == True %}
+			<button class="btn btn-dark btn-right" type="button" onclick="location.href='/gallery/list'">갤러리</button>
+			<button class="btn btn-dark btn-right" type="button" onclick="location.href='/board/list'">자유게시판</button>
+			<button class="btn btn-dark btn-right" type="button" onclick="location.href='/member/myinfo'">마이페이지</button>
+			<button class="btn btn-dark btn-right" type="button" onclick="location.href='/member/logout'">로그아웃</button>
+		{% else %}
+			<button class="btn btn-dark btn-right" type="button" onclick="location.href='/member/loginForm'">로그인</button>
+            <button class="btn btn-dark btn-right" type="button" onclick="location.href='/member/join'">회원가입</button>
+		{% endif %}
+
+		</div>
+	</nav>
+	</div>
+	
+	<div style="text-align: center; margin-top:5%;">
+		 <img src="{{ url_for('static', filename='img/homeLogo.png') }}">
+	</div>
+
+	<div style="text-align: center; font-family: 'IBM Plex Sans KR', sans-serif; ">
+		<h6>우리 동네 주변 편의시설은 어디 있을까요? 아래 동네 지도를 이용해서 확인해보세요! </h6>
+		<h6>원하는 종류의 지도가 없으면, 키워드 검색 지도를 클릭해서 원하는 검색어를 입력해보세요. </h6>
+
+		<button type="button" class="btn btn-warning"  onclick="location.href='/map/health'">헬스장 지도</button>
+		<button type="button" class="btn btn-warning"  onclick="location.href='/map/hospital'">동네 병원 지도</button>
+		<button type="button" class="btn btn-warning"  onclick="location.href='/map/medicine'">동네 약국 지도</button>
+		<button type="button" class="btn btn-warning"  onclick="location.href='/map/pet'">반려동물 병원 지도</button>
+		<button type="button" class="btn btn-warning"  onclick="location.href='/map/box'">여성안심택배함 지도</button>
+		<button type="button" class="btn btn-warning"  onclick="location.href='/map/keyword'">키워드 검색 지도</button>
+	</div>
+
+	<section style="text-align: center; font-family: 'IBM Plex Sans KR', sans-serif;">
+
+		<h4 style="font-weight: 700; margin-top:2%; margin-bottom:2%;"> 우리 동네 지도</h4>
+
+	<div id="map" style="width:60%;height:500px; margin-top: -20%; margin:0 auto; border:10px solid #FCDAC0;"></div>
+		<script>
+		// 이미지 지도에서 마커가 표시될 위치입니다
+		var markerPosition  = new kakao.maps.LatLng(37.514399059481946, 127.1061086133682);
+
+		// 이미지 지도에 표시할 마커입니다
+		// 이미지 지도에 표시할 마커는 Object 형태입니다
+		var marker = {
+			position: markerPosition
+		};
+
+		var staticMapContainer  = document.getElementById('map'), // 이미지 지도를 표시할 div
+			staticMapOption = {
+				center: new kakao.maps.LatLng(37.514399059481946, 127.1061086133682), // 이미지 지도의 중심좌표
+				level: 3, // 이미지 지도의 확대 레벨
+				marker: marker // 이미지 지도에 표시할 마커
+			};
+
+		// 이미지 지도를 생성합니다
+		var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
+		</script>
+	</section>
+
+	<section style="margin-top:5%;"></section>
+</body>
+</html>

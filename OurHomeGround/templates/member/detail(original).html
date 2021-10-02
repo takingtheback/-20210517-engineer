@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function del() {
+            location.href='/member/out'
+        }
+    </script>
+</head>
+<body>
+<h3>{{m.id}}님의 정보</h3>
+<form action="/member/edit" method="post">
+    name:<input type="text" name="name" id="name" value="{{m.name}}"><br/>
+    password:<input type="text" name="pwd" id="pwd" value="{{m.pwd}}"><br/>
+    email:<input type="text" name="email" id="email" value="{{m.email}}"><br/>
+    mobile:<input type="text" name="mobile" id="mobile" value="{{m.mobile}}"><br/>
+    <input type="submit" value="수정">
+    <input type="button" value="삭제" onclick="del()">
+    </form>
+    <!-- 되돌아가기 -->
+    <div class="caption">
+        <a href="/">되돌아가기</a>
+    </div>
+</body>
+</html>

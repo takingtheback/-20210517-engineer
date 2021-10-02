@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function del(){
+            flag = confirm('정말 삭제하시겠습니까?')
+            if(flag){
+               document.delForm.submit();
+            }else{
+                alert('삭제가 취소되었습니다')
+            }
+        }
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+		<!--LOGO-->
+		<a class="navbar-brand" href="/">HOME</a>
+		<!--Links-->
+		<div class="container-fluid full-width">
+		<ul class="nav navbar-nav">
+		<li class="nav-item active">
+
+		</li>
+		<li class="nav-item">
+
+		</li>
+		</ul>
+		<div>
+		{% if session.flag == True %}
+			<button class="btn btn-dark btn-right" type="button" onclick="location.href='/gallery/list'">갤러리</button>
+			<button class="btn btn-dark btn-right" type="button" onclick="location.href='/board/list'">자유게시판</button>
+			<button class="btn btn-dark btn-right" type="button" onclick="location.href='/member/myinfo'">마이페이지</button>
+			<button class="btn btn-dark btn-right" type="button" onclick="location.href='/member/logout'">로그아웃</button>
+		{% else %}
+			<button class="btn btn-dark btn-right" type="button" onclick="location.href='/member/loginForm'">로그인</button>
+            <button class="btn btn-dark btn-right" type="button" onclick="location.href='/member/join'">회원가입</button>
+		{% endif %}
+
+		</div>
+	</nav>
+	</div>
+    <br>
+    <br>
+    <button class="btn btn-light"><a href="/" class="text-danger">목록으로 되돌아가기</a></button>
+
+     <!-- Page content-->
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Post content-->
+                    <article>
+                        <!-- Post header-->
+                        <header class="mb-4">
+                            <!-- Post title-->
+                            <h1 class="fw-bolder mb-1">{{g.gall_title}}</h1>
+                            <!-- Post meta content-->
+                            <div class="text-primary mb-2">{{g.gall_writer}}</div>
+                            <div class="text-muted fst-italic mb-2">{{g.gall_date}}</div>
+                            <br>
+                        {% if session.login_id == g.gall_writer%}
+                            <a href="/gallery/edit/{{g.gall_num}}" class="text-info">수정하기</a>
+                            <a herf="/gallery/del/{{g.gall_num}}" class="text-info" onclick="del()">삭제하기</a>
+                        {% endif %}
+                            <br>
+                        </header>
+                        <!-- Preview image figure-->
+                        <figure class="mb-1"><img src='{{g.gall_img}}' style="width:800px;height:500px"></figure>
+                        <!-- Post content-->
+                        <section>
+                            <p class="fs-5">{{g.gall_content}}</p>
+                            <form name="delForm" method="post" action="/gallery/del">
+                            <input type="hidden" name="gall_num" value="{{g.gall_num}}">
+                            </form>
+                        </section>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+</body>
+</html>

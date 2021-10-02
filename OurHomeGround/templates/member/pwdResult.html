@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>슬기로운동네생활</title>
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/css_JHK.css')}}">
+
+</head>
+
+<body class="findPw-Page">
+<section class="findMemberPw-form">
+	<h1>비밀번호 변경 완료</h1>
+	<h3> 새 비밀번호로 다시 로그인해주세요.</h3>
+		<form action="/member/loginForm" method="get">
+			<div class="btn-area">
+			<button type="submit">로그인</button>
+		</div>
+		<!-- 되돌아가기 -->
+		<div class="caption">
+			<a href="/">되돌아가기</a>
+		</div>
+	</form>
+</section>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>비밀번호찾기|슬기로운동네생활</title>
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/css_JHK.css')}}">
+</head>
+
+<body class="findPw-Page">
+<section class="findMemberPw-form">
+	<h1>회원가입 완료</h1>
+	<h3> 회원가입을 축하드립니다. 로그인을 해주세요.</h3>
+		<form action="/member/loginForm" method="get">
+			<div class="btn-area">
+			<button type="submit">로그인</button>
+		</div>
+		<!-- 되돌아가기 -->
+		<div class="caption">
+			<a href="/">되돌아가기</a>
+		</div>
+		</form>
+</section>
+</body>
+</html>

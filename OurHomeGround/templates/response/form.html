@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>write page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li>접속자 : <strong>{{session.login_id}}</strong> 님</li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">댓글작성</h3>
+        </div>
+        <section>
+            <form class="form-horizontal" method="post" action="/response/add" method="post">
+
+   <div class="form-group">
+                        <label class="col-md-12">resnum</label>
+                        <div class="col-md-12">
+                            <input id="resnum" name="resnum" placeholder="아이디를 입력하세요." class="form-control input-md", autofocus required><!--required : 공백입력시 경고-->
+                        </div>
+                    </div>
+    <div class="form-group">
+                        <label class="col-md-12">Post</label>
+                        <div class="col-md-12">
+                            <textarea class="form-control" id="write" name="write" placeholder="내용을 입력하세요." style="height:260px;" required></textarea>
+                        </div>
+                    </div>
+    <tr><th></th><td><input type="submit" value="저장"></td></tr>
+            </form>
+        </section>
+    </div>
+</body>
+</html>

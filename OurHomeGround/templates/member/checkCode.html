@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>비밀번호찾기|슬기로운동네생활</title>
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/css_JHK.css') }}">
+<script type="text/javascript">
+	window.onload = function() {
+            initForm();
+        }
+
+    /* 폼 초기화 함수 */
+    function initForm() {
+        document.getElementById("tempNumConfirm").focus();
+    }
+
+    function checkForm() {
+        var tempNum = document.getElementById("tempNum").value;
+        var tempNumConfirm = document.getElementById("tempNumConfirm").value;
+
+        // 비밀번호와 비밀번호확인 매칭 검증
+        if (tempNum != tempNumConfirm) {
+            document.getElementById("tempNumConfirm").focus();
+            document.getElementById("ErrorMsg").innerHTML = "입력하신 두 비밀번호가 일치하지 않습니다.";
+
+            return false;
+        }
+    }
+	
+</script>	
+</head>
+    
+<body class="findPw-Page">
+ <section class="findMemberPw-form">
+        <h1>인증메일발송</h1><br>
+        <h3 id="emailMsg">{{m}}님의 메일로 인증코드를 발송했습니다.</h3>
+        <h3 id="ErrorMsg"></h3>
+
+
+        <form name="checkForm" action="/member/resetPwdForm" method="post">
+            <input type="hidden" name="id" id="id" value="{{m}}">
+            <input type="hidden" name="tempNum" id="tempNum" value="{{tempNum}}">
+            <div class="int-area">
+            <input type="text" name="tempNumConfirm" id="tempNumConfirm"
+                   placeholder=" 인증번호를 입력해주세요." autocomplete="off" required>
+            </div>
+            <div class="btn-area">
+                <button type="submit" onclick="return checkForm();">확인</button>
+            </div>
+            <div class="caption">
+                <a href="/">취소</a>
+            </div>
+        </form>
+            
+</section>
+</body>
+</html>

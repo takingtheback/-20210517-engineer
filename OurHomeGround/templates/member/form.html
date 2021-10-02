@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입|슬기로운동네생활</title>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/css_JHK.css') }}">
+     <script type="text/javascript">
+        window.onload = function() {
+            initForm();
+        }
+
+        /* 폼 초기화 함수 */
+        function initForm() {
+            document.getElementById("id").focus();
+        }
+
+        function checkForm() {
+            var memberPw = document.getElementById("pwd").value;
+            var memberPwConfirm = document.getElementById("pwdConfirm").value;
+
+            // 비밀번호와 비밀번호확인 매칭 검증
+            if (memberPw != memberPwConfirm) {
+                document.getElementById("pwd").focus();
+                document.getElementById("memberPwMsg").innerHTML = "입력하신 두 비밀번호가 일치하지 않습니다.";
+
+                return false;
+            }
+        }
+    </script>
+</head>
+<body class="login-Page">
+        <section class="login-form">
+        <h1>회원가입</h1>
+        <h3 id="memberPwMsg"></h3>
+        <form action="/member/join" method="post">
+
+            <!-- 아이디 -->
+            <div class="int-area">
+            <input type="text" name="id" id="id"
+                   placeholder=" 아이디를 입력해주세요." autocomplete="off" required>
+            </div>
+            <!-- 비밀번호 -->
+            <div class="int-area">
+            <input type="password" name="pwd" id="pwd"
+                placeholder=" 비밀번호를 입력해주세요." autocomplete="off" required>
+            </div>
+            <!-- 비밀번호 재입력 -->
+            <div class="int-area">
+             <input type="password" name="pwdConfirm" id="pwdConfirm"
+                    placeholder=" 비밀번호 재입력 " autocomplete="off" required>
+            </div>
+            <!-- 이름 -->
+            <div class="int-area">
+            <input type="text" name="name" id="name"
+                placeholder=" 이름을 입력해주세요." autocomplete="off" required>
+            </div>
+            <!-- 이메일 -->
+            <div class="int-area">
+            <input type="text" name="email" id="email"
+                placeholder=" 이메일을 입력해주세요." autocomplete="off" required>
+            </div>
+            <!-- 휴대폰 -->
+            <div class="int-area">
+            <input type="text" name="mobile" id="mobile"
+                placeholder=" 휴대폰 번호를 입력해주세요." autocomplete="off" required>
+            </div>
+            <!-- 로그인 -->
+            <div class="btn-area">
+                <button type="submit" onclick="return checkForm();">회원가입</button>
+            </div>
+            <div class="caption">
+                <a href="/">되돌아가기</a>
+            </div>
+            </form>
+        </section>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>아이디 찾기|슬기로운동네생활</title>
+
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/css_JHK.css')}}">
+
+</head>
+
+<body class="findPw-Page">
+ <section class="findMemberPw-form">
+    <h1>아이디찾기</h1>
+    <form action="/member/findId" method="post">
+        <div class="int-area">
+            <input type="text" name="name" id="name"
+                   placeholder="이름을 입력해주세요." autocomplete="off" required>
+        </div>
+        <div class="int-area">
+            <input type="text" name="email" id="email"
+                   placeholder="이메일을 입력해주세요." autocomplete="off" required>
+        </div>
+        <div class="btn-area">
+
+        <button type="submit">확인</button>
+        </div>
+        <!-- 되돌아가기 -->
+            <div class="caption">
+                <a href="/">되돌아가기</a>
+            </div>
+    </form>
+</section>
+</body>
+</html>

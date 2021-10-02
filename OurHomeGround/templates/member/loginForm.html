@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+  		<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<title>로그인|슬기로운동네생활</title>
+		
+        <!-- css : external : css_JHK.css -->
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/css_JHK.css') }}">
+
+        <!-- js : external  : js_logIn_JHK.js 
+        <script src="js_logIn_JHK.js"></script>
+        -->
+        
+        <!-- js : internal  : js_logIn_JHK.js -->
+        <script type="text/javascript">
+        
+        /* window 호출 한번만 */
+        window.onload = function() {
+		  initForm();
+	    }
+        /* 폼 초기화 함수 */
+	    function initForm() {
+            document.getElementById("id").focus();
+        
+        }
+
+        function goIndex() {
+	    	location.href="#"; }
+        </script>
+	
+	</head>
+	
+	<body class="login-Page">
+        <section class="login-form">
+        <h1>슬기로운 동네생활</h1>
+        <form action="/member/login" method="post">
+            
+            <!-- 아이디 -->
+            <div class="int-area">
+                <span id="memberIdMsg"></span>
+                <input type="text" name="id" id="id"
+                       placeholder=" 아이디를 입력해주세요." autocomplete="off" required>
+            </div>
+            <!-- 비밀번호 -->
+            <div class="int-area">
+                <span id="memberPwMsg"></span>
+                <input type="password" name="pwd" id="pwd"
+                    placeholder=" 비밀번호를 입력해주세요." autocomplete="off" required>
+            </div>
+            <!-- 로그인 --> 
+
+            <div class="btn-area">
+                <button type="submit">로그인</button>
+            </div>
+            </form>
+            <!--  카카오 로그인 -->
+            <div class="caption">
+            <a id="kakao-login-btn"></a>
+            <div id="result"></div>
+			</div>
+            <!-- 아이디 비밀번호찾기 --> 
+            <div class="caption">
+                <a href="/member/findIdForm"> 아이디</a>
+                <span class="span1">/ </span>
+                <span class="span1">
+                <a href="/member/findPwd"> 비밀번호 찾기</a></span>
+            </div>
+            <div class="caption">
+                <a href="/member/join">회원가입</a>
+            </div>
+            <!-- 되돌아가기 -->
+            <div class="caption">
+                <a href="/">되돌아가기</a>
+            </div>
+            <form name="kLogin" action="/member/kakaoLogin" method="post">
+            <input type="hidden" name="kid" id="kid">
+            </form>
+        </section>
+        <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+		<script type="text/javascript">
+
+		/* 카카오 로그인 */
+		window.Kakao.init("2d681ebbff382a35fc7708f907548c94");
+
+		 function unlinkApp() {
+            Kakao.API.request({
+              url: '/v1/user/unlink',
+              success: function(res) {
+                alert('success: ' + JSON.stringify(res))
+              },
+              fail: function(err) {
+                alert('fail: ' + JSON.stringify(err))
+              },
+            })
+          }
+
+         Kakao.Auth.createLoginButton({
+            container: '#kakao-login-btn',
+            success: function(authObj) {
+              Kakao.API.request({
+                url: '/v2/user/me',
+                success: function(result) {
+
+
+                  $('#result').append(result);
+                  id = result.id
+                  connected_at = result.connected_at
+                  kakao_account = result.kakao_account
+                  $('#result').append(kakao_account);
+                  document.getElementById("kid").value = result.id;
+                  document.kLogin.submit();
+
+                },
+                fail: function(error) {
+                  alert(
+                    'login success, but failed to request user information: ' +
+                      JSON.stringify(error)
+                  )
+                },
+              })
+            },
+            fail: function(err) {
+              alert('failed to login: ' + JSON.stringify(err))
+            },
+          })
+
+		</script>
+	</body>
+</html>
+
+

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maxinum-scale=1, user-scalable=no">
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+		<title>post content page</title>
+    <script>
+        function del(){
+            flag = confirm('정말 삭제하시겠습니까?')
+            if(flag){
+                location.href='/board/del?num={{b.num}}'
+            }else{
+                alert('삭제가 취소되었습니다')
+            }
+        }
+    </script>
+	<style type="text/css">
+		div{text-align:center;}
+	</style>
+</head>
+<body>
+<body>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+		<a class="navbar-brand" href="/">HOME</a>
+		<div class="container-fluid full-width">
+		<ul class="nav navbar-nav">
+		</ul>
+		<div>
+			<button class="btn btn-dark btn-right" type="button" onclick="location.href='/board/list'">목록으로 돌아가기</button>
+		</div>
+	</nav>
+	</div><br><br>
+<h3>게시판 정보</h3><br>
+<form action="/board/edit" method="post">
+<table border="1">
+   <div><tr><th>num</th><td><input type="text" name="num" value="{{b.num}}" readonly></td></tr>
+  <tr><th>writer</th><td><input type="text" name="writer" value="{{b.writer}}" readonly></td></tr>
+    <tr><th>w_date</th><td><input type="text" name="w_date" value="{{b.w_date}}" readonly></td></tr>
+    </table><br><br>
+    <table border="2">
+  <tr><th width="80">title</th><td width="1000">{{b.title}}</td></tr>
+  <tr><th>content</th><td height="200">{{b.content}}</td></tr></div>
+        <td colspan="2"><input type="button" value="댓글입력" onclick="location.href='/response/add'">
+        <input type="button" value="댓글확인" onclick="location.href='/response/get'"></td>
+</table>
+    <table><tr>
+      <td colspan="2"><input type="submit" value="수정">
+      <input type="button" value="삭제" onclick="del()"></td></tr>
+</table>
+</form>
+</body>
+</html>

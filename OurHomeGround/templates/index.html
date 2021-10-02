@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
+		<title>post page</title>
+	</head>
+	<body>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+		<!--LOGO-->
+		<a class="navbar-brand" href="/">HOME</a>
+		<!--Links-->
+		<div class="container-fluid full-width">
+		<ul class="nav navbar-nav">
+		<li class="nav-item active">
+			<a class="nav-link" href="/post">Post</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="/post">Post2</a>
+		</li>
+		</ul>
+		<div>
+		{% if session.flag == True %}
+			<button class="btn btn-dark btn-right" type="button" onclick="location.href='/gallery/list'">게시판</button>
+			<button class="btn btn-dark btn-right" type="button" onclick="location.href='/board/list'">질문게시판</button>
+			<button class="btn btn-dark btn-right" type="button" onclick="location.href='/member/myinfo'">마이페이지</button>
+			<button class="btn btn-dark btn-right" type="button" onclick="location.href='/member/logout'">로그아웃</button>
+		{% else %}
+			<button class="btn btn-dark btn-right" type="button" onclick="location.href='/member/loginForm'">로그인</button>
+            <button class="btn btn-dark btn-right" type="button" onclick="location.href='/member/join'">회원가입</button>
+		{% endif %}
+
+		</div>
+	</nav>
+	</div>
+
+</body>
+</html>
