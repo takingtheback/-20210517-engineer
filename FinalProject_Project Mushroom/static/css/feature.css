@@ -1,0 +1,54 @@
+th, td {
+  padding: 5px;
+}
+th.opt {
+  text-align: right;
+}
+
+table.feature {
+  margin-left: auto; margin-right: auto
+}
+h1, h2, h3, h4 {
+  margin-bottom: 10px;
+}
+
+h5.head{
+  margin-bottom: 10px;
+}
+
+form {
+  margin: 30px;
+}
+
+select {
+ color:white;
+ background:black;
+ border:1px solid;
+ width: 100px;
+}
+div.feature{
+  margin: 50px;
+}
+
+tr.result{
+  font-size: 20px;
+}
+span.info{
+  z-index: 100;
+}
+.tooltip-inner {max-width: 1000px}
+.analysisBtn {
+    display: flex;
+    margin-left: 38px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    position: relative;
+    width: 225px;
+    height: 30px;
+    background: #FAD496;
+    border-radius: 8px;
+}
+
+}

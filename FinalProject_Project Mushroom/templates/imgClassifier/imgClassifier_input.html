@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='favicon/favicon2.ico')}}" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{url_for('static', filename='css/styles.css')}}" rel="stylesheet" />
+        <link href="{{url_for('static', filename='css/imgClassifier.css')}}" rel="stylesheet" />
+        <!-- JavaScript -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="{{url_for('static', filename='js/scripts.js')}}" ></script>
+        <!-- Loading -->
+        <link rel="stylesheet" href="{{url_for('static', filename='css/loading.css')}}"/>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script>
+            $(document).ready(function() {
+
+            $('#loading').hide();
+            $('#imageSearch').submit(function(){
+                $('#loading').show();
+                return true;
+                });
+            });
+
+            $(function () {
+            $("[data-toggle='tooltip']").tooltip({'placement': 'left'});
+            });
+        </script>
+    <title>이미지로 속 분류</title>
+</head>
+<body>
+<!-- loading page -->
+<div class="loading" id="loading" style="justify-items: center !important; left: -10%;
+    width: 110% !important;">
+    <div class="loadingImg">
+        <img src="/static/images/loadingImage.gif" style="width:100px;height:100px;">
+        <h4 style="color: #EEE;">
+            <span style="color:#FAD496;font-weight:bold !important">머신러닝 모델</span>을 활용해 결과 분석 중 입니다.
+            <br><br>
+            잠시 기다려주세요.
+        </h4>
+    </div>
+</div>
+<!-- sidebar -->
+{% include './sideMenu/sidebar.html' %}
+<!-- Background Video-->
+<video class="bg-video" playsinline="playsinline" preload="metadata" muted="muted" loop="true" autoplay="true">
+    <source src="{{url_for('static', filename='mp4/bg6.mp4')}}" type="video/mp4" />
+</video>
+<!-- imgClassifier_input -->
+<div class="masthead">
+    <div class="masthead-content masthead-content-custom text-white" style="padding-right: 6rem !important">
+            <h1 class="fst-italic lh-1 mb-4" style="font-size: 2.7rem !important">버섯 사진을 검색해보세요.</h1>
+            <p class="sentence2 ">버섯 사진을 분석하여 9가지 속으로 분류 할 수 있습니다.</p>
+            <p class="sentence2">
+                <b>속(genus)</b>이란?
+                <span class="customToolTip">
+                    <i class="far fa-question-circle" data-html="true" data-toggle="tooltip" data-placement="top">
+                    </i>
+                    <span class="customToolTipSpan" style="
+                          position:absolute; display:none;
+                          margin-left: 10px;
+                          border-radius: 5px;
+                          background-color:rgb(200,200,200);
+                          color:#000;
+                    ">
+                        속(genus)은 생물 분류 단계 중 하나로,<br> 종-속-과-목-강-문-계-역-생명으로 구성된 <br>생물 분류 중 아래에서 두번째 단계입니다.
+                    </span>
+                </span>
+            </p>
+            <p class="sentence2 tooltip-custom-open" style="padding-bottom: 10px;">
+                분류하는 <b>9가지 속</b> 목록
+                <span class="customToolTip">
+                    <i class="far fa-question-circle" data-html="true" data-toggle="tooltip" data-placement="top">
+                    </i>
+                    <span class="customToolTipSpan" style="
+                          position:absolute; display:none;
+                          margin-left: 10px;
+                          border-radius: 5px;
+                          background-color:rgb(200,200,200);
+                          color:#000;
+                    ">
+                        Agaricus, Amanita, Boletus, Cortinarius, Entoloma, Hygrocybe, Lactarius, Russula, Suillus
+                    </span>
+                </span>
+            </p>
+            <form name="imageSearch" id="imageSearch"  enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-5" style="padding: 0">
+                        <label class="uploadfileBtn" for="uploadfile" accept=".jpg,.jpeg,.png">업로드 파일</label>
+                        <input type="file" id="uploadfile" name="uploadfile"/>
+                    </div>
+                    <div class="col-6" style="padding: 0">
+                        <input id="searchBtn" class="searchBtn" type="submit" value="판별하기" disabled/>
+                    </div>
+                    <p class="sentence2">jpg, png 첨부 가능</p>
+                    <p id="inputFileName">No File</p>
+                </div>
+            </form>
+    </div>
+</div>
+</body>
+
+<!-- Core theme JS-->
+<script type="text/javascript">
+// 업로드할 파일 이름 처리하기
+const $uploadFile = document.querySelector("#uploadfile");
+const $inputFileName = document.querySelector("#inputFileName");
+const $formUploadButton = document.querySelector("#searchBtn");
+// 업로드할 파일 형식 배열
+const fileTypes = [
+    "image/jpeg",
+    "image/png"
+]
+// 업로드할 파일 검증 메서드
+const validFileType = (file) => {
+    return fileTypes.includes(file.type);
+}
+//  업로드할 파일 크기 출력 메서드
+const returnFileSize = (number) => {
+    if(number < 1024) {
+        return number + 'bytes';
+    } else if(number >= 1024 && number < 1048576) {
+        return (number/1024).toFixed(1) + 'KB';
+    } else if(number >= 1048576) {
+        return (number/1048576).toFixed(1) + 'MB';
+    }
+}
+let uploadReady = new Boolean(false);
+//파일 업로드를 위한 메서드
+const updateImageFile = () => {
+    const currentFiles = $uploadFile.files;
+    if(currentFiles.length === 0) {
+        $inputFileName.textContent = "파일이 업로드 되지 않았습니다.";
+    }
+
+    for(const file of currentFiles) {
+        if(validFileType(file)) {
+            uploadReady = true;
+            $inputFileName.textContent = `${file.name}, size: ${returnFileSize(file.size)}`;
+            $formUploadButton.removeAttribute("disabled");
+        } else {
+            $inputFileName.textContent = `${file.name} 은 적합한 파일이 아닙니다.`;
+            $formUploadButton.setAttribute("disabled", "");
+        }
+    }
+}
+$uploadFile.addEventListener("change", updateImageFile);
+
+// 커스텀툴팁
+const $customToolTipMark = document.querySelectorAll(".customToolTip");
+let newDIV = document.createElement("div");
+let newP = document.createElement("p");
+
+for(let i=0; i<$customToolTipMark.length; i++) {
+    $customToolTipMark[i].addEventListener("mouseenter", () => {
+        let lastEl = $customToolTipMark[i].lastChild.previousSibling;
+        // console.log(lastEl.innerHTML);
+        lastEl.style.display = "inline-block";
+    });
+   $customToolTipMark[i].addEventListener("mouseleave", () => {
+        let lastEl = $customToolTipMark[i].lastChild.previousSibling;
+        lastEl.style.display = "none";
+   });
+}
+
+// 파일 업로드 처리하기
+const uploadProcess = () => {
+    const $imageSearch = document.querySelector("#imageSearch");
+    if(uploadReady == true) {
+        $imageSearch.method = "POST";
+        $imageSearch.action = "/mushroom/imageSearch";
+    } else {
+        alert("처음부터 다시 진행해주세요.");
+    }
+}
+
+$formUploadButton.addEventListener("click", uploadProcess);
+</script>
+<!-- Bootstrap core JS-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.js"></script>
+</html>

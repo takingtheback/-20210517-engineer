@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>사이드바</title>
+
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{{url_for('static', filename='css/styles.css')}}" rel="stylesheet" />
+</head>
+
+<body>
+<!-- side menu-->
+<input type="checkbox" id="menuicon">
+            <ul>
+                <li>
+                    <label for="menuicon" data-toggle="tooltip" data-placement="left" title="menu" style="left:20px;">
+                        <span></span><span></span><span></span>
+                    </label>
+                </li>
+            </ul>
+
+            <div class="sidebar">
+            <!-- 홈버튼 -->
+                <li class="sidebar-text2"><span style="color:#FAD496"><img src="/static/images/home.png" width="22" height="22"> 홈</span></li>
+                <li class="sidebar-text"><a href="/">홈으로</a></li>
+            <!-- 공공데이터 API -->
+                <li class="sidebar-text2"><span style="color:#FAD496"><img src="/static/images/search.png" width="22" height="22"> 검색</span></li>
+                <li class="sidebar-text"><a href="/resource/resourceForm">한글명</a></li>
+                <li class="sidebar-text"><a href="/resource/resourceEngForm">영문명</a></li>
+                <li class="sidebar-text"><a href="/img/imgForm">사진 검색</a></li>
+                <li class="sidebar-text"><a href="/system/searchFormKor">한글 분류명</a></li>
+                <li class="sidebar-text"><a href="/system/searchFormEng">영문 분류명</a></li>
+
+            <!-- Machine Learning -->
+                <li class="sidebar-text2"><span style="color:#FAD496"><img src="/static/images/machineLearning2.png" width="22" height="22"> 머신러닝</span></li>
+                <li class="sidebar-text"><a href="/mushroom/imgClassifier">이미지로 속 분류</a></li>
+                <li class="sidebar-text"><a href="/feature/featureForm">특징으로 독성 판별</a></li>
+
+            <!-- JS script -->
+                <li class="sidebar-text2"><span style="color:#FAD496"><img src="/static/images/information.png" width="22" height="22"> 정보</span></li>
+                <li class="sidebar-text"><a href="/resource/mushroomDish">버섯 요리</a></li>
+                <li class="sidebar-text"><a href="/resource/testSurviveOrDeath">구별 퀴즈</a></li>
+                <li class="sidebar-text"><a href="/resource//poisonousMushroom">추가 정보</a></li>
+            </div>
+</body>
+</html>

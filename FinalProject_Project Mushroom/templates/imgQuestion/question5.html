@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>독버섯 퀴즈</title>
+        <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='favicon/favicon2.ico')}}" />
+        <!-- Font Awesome icons (free version) -->
+        <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap) -->
+        <link href="{{url_for('static', filename='css/styles.css')}}" rel="stylesheet" />
+        <!-- JavaScript -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="{{url_for('static', filename='js/script.js')}}" ></script>
+        <!-- Loading -->
+        <link rel="stylesheet" href="{{url_for('static', filename='css/loading.css')}}"/>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script>
+            $(document).ready(function() {
+
+            $('#loading').hide();
+            $('#searchRequest').submit(function(){
+                $('#loading').show();
+                return true;
+                });
+            });
+
+             $(function () {
+            $("[data-toggle='tooltip']").tooltip({'placement': 'auto'});
+
+            });
+        </script>
+    </head>
+    <body>
+         <!-- loading page -->
+        <div class="loading" id="loading">
+            <div class="loadingImg"><img src="/static/images/loadingImage.gif" style="width:100px;height:100px;"></div>
+            <h4><span style="color:#FAD496;font-weight:bold">API </span>정보를 로딩 중 입니다...<br><br>
+            잠시 기다려주세요.</h4>
+        </div>
+        <!-- side menu -->
+        {% include './sideMenu/sidebar.html' %}
+        <!-- Background Video -->
+        <video class="bg-video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop"><source src="{{url_for('static', filename='mp4/bg8.mp4')}}" type="video/mp4" /></video>
+       <!-- Masthead2 본문 -->
+        <div class="masthead2">
+            <div class="masthead-content text-white">
+                <div class="container-fluid px-4 px-lg-0">
+                    <h2 class="fst-italic lh-1 mb-4">Project Mushroom</h2>
+                    <h4 class="fst-normal lh-1 mb-4">이 사진 중에 <span style="color:#FAD496">식용버섯</span>은 무엇일까요?</h4>
+                    <!-- 보기 항목 -->
+                    <table class="mushroom-table">
+                        <form action="/resource/wrongAnswer" id="wrongAnswer" method="POST">
+                            <input type="hidden" name="name" id="name" value="개나리광대버섯">
+                                <tr>
+                                    <td><input type="IMAGE" src="https://raw.githubusercontent.com/FinalMushrooms/Playdata_Final_Mushrooms/main/%EC%9D%B4%EB%AF%B8%EC%A7%80%EC%86%8C%EC%8A%A4/%EA%B0%9C%EB%82%98%EB%A6%AC%EA%B4%91%EB%8C%80%EB%B2%84%EC%84%AF.jpg" width="400" height="250" name="submit" value="submit" class="viewImg"></td>
+                                    <td><input type="IMAGE" src="https://raw.githubusercontent.com/FinalMushrooms/Playdata_Final_Mushrooms/main/%EC%9D%B4%EB%AF%B8%EC%A7%80%EC%86%8C%EC%8A%A4/%EA%B0%9C%EB%82%98%EB%A6%AC%EA%B4%91%EB%8C%80%EB%B2%84%EC%84%AF2.jpg" width="400" height="250" name="submit" value="submit" class="viewImg"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="IMAGE" src="https://raw.githubusercontent.com/FinalMushrooms/Playdata_Final_Mushrooms/main/%EC%9D%B4%EB%AF%B8%EC%A7%80%EC%86%8C%EC%8A%A4/%EA%B0%9C%EB%82%98%EB%A6%AC%EA%B4%91%EB%8C%80%EB%B2%84%EC%84%AF3.jpg" width="400" height="250" name="submit" value="submit" class="viewImg"></td>
+                        </form>
+                                    <form action="/resource/correctAnswer" id="correctAnswer" method="POST">
+                                        <input type="hidden" name="name2" id="name2" value="꾀꼬리버섯">
+                                        <td><input type="IMAGE" src="https://raw.githubusercontent.com/FinalMushrooms/Playdata_Final_Mushrooms/main/%EC%9D%B4%EB%AF%B8%EC%A7%80%EC%86%8C%EC%8A%A4/%EA%BE%80%EA%BC%AC%EB%A6%AC%EB%B2%84%EC%84%AF.jpg" width="400" height="250" name="submit" value="submit" class="viewImg"></td>
+                                    </form>
+                                </tr>
+                    </table>
+                    <!-- 되돌아가기 -->
+                    <div>
+                          <a href="/" class="link-main">메인으로</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.js"></script>
+    </body>
+</html>

@@ -1,0 +1,148 @@
+/* imgClassifier_input.html */
+.masthead {
+    height: 450px !important;
+}
+
+#uploadfile {
+   visibility: hidden;
+   display: none;
+}
+
+.uploadfileBtn {
+    text-align: center;
+    width: 138px !important;
+    height: 35px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 6px 12px;
+    background-color: rgb(0,0,0);
+    color: rgb(240, 240, 240);
+    cursor: pointer;
+}
+
+.searchBtn {
+    text-align: center;
+    width: 138px !important;
+    height: 35px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 6px 12px;
+    background-color: rgb(0,0,0);
+    color: rgb(240, 240, 240);
+    cursor: pointer;
+}
+.searchBtn:disabled {
+    text-align: center;
+    width: 138px !important;
+    height: 35px;
+    border: 0px solid #000;
+    border-radius: 5px;
+    padding: 6px 12px;
+    color: rgb(200,200,200);
+    background-color: rgb(240, 240, 240);
+    cursor: pointer;
+}
+.searchBtn:enabled:hover {
+    text-align: center;
+    width: 138px !important;
+    height: 35px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 6px 12px;
+    background-color: #FAD496;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+}
+
+/* imgClassifier_output.html */
+th, td {
+    border: 0.5px solid rgb(50, 50, 50);
+}
+
+.masthead2 {
+    display: flex;
+    width: 100%;
+    /* overflow-y: scroll !important; */
+}
+
+.masthead-content {
+    z-index: 20 !important;
+}
+.masthead-content-custom {
+    height: 250px;
+}
+
+.masthead .masthead-content .title {
+    font-size: 2.0rem;
+}
+.masthead .masthead-content .sentence {
+    font-size: 1.1rem;
+}
+.masthead .masthead-content .sentence2 {
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+.tooltip-custom {
+    display: none;
+}
+
+
+.imgClassifierOutputContent {
+}
+
+.imgClassifierOutImg {
+    width: 50%;
+}
+
+.mushroomSpecLeft {
+}
+
+#mushroomSpecRight {
+    visibility: hidden;
+}
+
+.outputTable {
+    color: rgb(230, 230, 230) !important;
+}
+
+#displaySpecButton:hover {
+    cursor: pointer;
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
+.modal {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.75);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.modalWindow {
+
+}
+
+.modalPhotoView:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: normal;
+}
+#modalTitle {
+    color: rgb(30, 30, 30) !important;
+}
+
+#modalPhoto {
+    width: 350px;
+    height: 350px;
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>독버섯 판별</title>
+        <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='favicon/favicon1.ico')}}" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{url_for('static', filename='css/styles.css')}}" rel="stylesheet" />
+        <link href="{{url_for('static', filename='css/feature.css')}}" rel="stylesheet" />
+
+        <!-- JavaScript -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="{{url_for('static', filename='js/script.js')}}" ></script>
+
+        <!-- tooltip 이미지 나타내기 -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.js"></script>
+
+        <!-- loading page -->
+        <div class="loading" id="loading">
+            <div class="loadingImg"><img src="/static/images/loadingImage.gif" style="width:100px;height:100px;"></div>
+            <h4><span style="color:#FAD496;font-weight:bold">결과 분석 </span>중 입니다...<br><br>
+            잠시 기다려주세요.</h4>
+        </div>
+
+        <link rel="stylesheet" href="{{url_for('static', filename='css/loading.css')}}"/>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script type='text/javascript'>
+           $(document).ready(function() {
+
+            $('#loading').hide();
+            $('#search').submit(function(){
+                $('#loading').show();
+                return true;
+                });
+            });
+
+           $(function () {
+            $("[data-toggle='tooltip']").tooltip({'placement': 'left'});
+            });
+
+        </script>
+    </head>
+    <body>
+        <!-- side menu-->
+        {% include './sideMenu/sidebar.html' %}
+
+        <!-- Background Video-->
+        <video class="bg-video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop"><source src="{{url_for('static', filename='mp4/bg6.mp4')}}" type="video/mp4" /></video>
+       <!-- Masthead2 본문-->
+        <div class="masthead2">
+            <div class="masthead-content text-white">
+                <div class="feature">
+                    <h2 class="fst-italic lh-1 mb-4">Project Mushroom</h2>
+
+                    <h3 class="fst-normal lh-1 mb-4" style="color:#FAD496">독버섯 판별 결과</h3>
+
+                <div class="feature">
+                    <h4 class="fst-normal lh-1 mb-4">선택한 특징</h4>
+                    <table border="1">
+                        <tr><th>갓 모양</th><th>갓 표면</th><th>갓 색깔</th><th>멍</th><th>냄새</th><th>주름 색깔</th><th>개체군</th></tr>
+                        <tr>
+                            <th>{{cap_shape}}</th>
+                            <th>{{cap_surface}}</th>
+                            <th>{{cap_color}}</th>
+                            <th>{{bruises}}</th>
+                            <th>{{odor}}</th>
+                            <th>{{gill_color}}</th>
+                            <th>{{population}}</th>
+                        </tr>
+                    </table>
+                    <br/>
+                    <table class="feature">
+                        <tr class="result">
+                            <td>분석결과</td>
+                            <th >
+                                {% if res == '독버섯' %}
+                                <span  style="color:red;">{{res}}</span>일 확률이 높습니다.
+                                {%elif res == '독버섯 아님'%}
+                                <span>독버섯이 아닐 확률이 높습니다(식용 여부는 알 수 없습니다.)</span>
+                                {%else%}
+                                <span>특징을 선택해 분석을 진행하세요</span>
+                                {%endif%}
+
+                            </th>
+                        </tr>
+                    </table>
+                    <br>
+
+
+                    <!-- 이전페이지로 -->
+                    <div>
+                          <a href="/feature/featureForm" class="link-main">다른 특징으로 알아보기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+        <!-- Bootstrap core JS-->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.js"></script>
+
+    </body>
+</html>

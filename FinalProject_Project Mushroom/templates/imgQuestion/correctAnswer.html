@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>독버섯 퀴즈</title>
+        <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='favicon/favicon1.ico')}}" />
+        <!-- Font Awesome icons (free version) -->
+        <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap) -->
+        <link href="{{url_for('static', filename='css/styles.css')}}" rel="stylesheet" />
+        <!-- JavaScript -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="{{url_for('static', filename='js/script.js')}}" ></script>
+        <!-- Loading -->
+        <link rel="stylesheet" href="{{url_for('static', filename='css/loading.css')}}"/>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script type='text/javascript'>
+           $(document).ready(function() {
+            $('#loading').hide();
+            $('#searchRequest').submit(function(){
+                $('#loading').show();
+                return true;
+                });
+            });
+
+           $(function () {
+            $("[data-toggle='tooltip']").tooltip({'placement': 'left'});
+            });
+        </script>
+    </head>
+    <body>
+        <!-- loading page -->
+        <div class="loading" id="loading">
+            <div class="loadingImg"><img src="/static/images/loadingImage.gif" style="width:100px;height:100px;"></div>
+            <h4><span style="color:#FAD496;font-weight:bold">API </span>정보를 로딩 중 입니다...<br><br>
+            잠시 기다려주세요.</h4>
+        </div>
+        <!-- side menu -->
+        {% include './sideMenu/sidebar.html' %}
+        <!-- Background Video -->
+        <video class="bg-video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop"><source src="{{url_for('static', filename='mp4/bg5.mp4')}}" type="video/mp4" /></video>
+        <!-- Masthead2 본문 -->
+        <div class="masthead2">
+            <div class="masthead-content text-white">
+                <div class="container-fluid px-4 px-lg-0">
+                    <!-- 정답여부 -->
+                    <h2 class="fst-italic lh-1 mb-4">Project Mushroom</h2>
+                    <img src="/static/images/mushroomSoup.png" width="200" height="200">
+                    <h4 class="fst-normal lh-1 mb-4">당신이 고른 버섯은 <span style="color:#10D34E">식용</span>버섯인 '<span style="color:#FAD496">{{name}}</span>'입니다.</h4>
+                    <!-- 버섯에 관한 명언 -->
+                    <h3 class="fst-normal lh-1 mb-3" style="margin-top:30px;"><span style="color:#ED0606">하지만!</span></h3><br>
+                    <h3 class="fst-normal lh-1 mb-3">인터넷에서 얻은 어떠한 정보도 야생버섯을 식용버섯으로 구분짓는</h3><br>
+                    <h3 class="fst-normal lh-1 mb-3">절대적인 기준으로 사용하시면 안됩니다.</h3>
+                    <!-- 버섯정보 -->
+                    <form action="/resource/searchRequest" id=searchRequest method="POST">
+                        <div style="margin-top:20px;">
+                            <input type="hidden" name="st" value="1">
+                            <input type="hidden" name="numOfRows" value="10">
+                            <input type="hidden" name="pageNo" value="1">
+                            <input type="hidden" name="sw" value="{{name}}">
+                            <input type="submit" value="이 버섯에 대한 정보 확인하기" class="detail">
+                        </div>
+                    </form>
+                    <!-- 메인으로 -->
+                    <div style="margin-top:10px;">
+                         <a href="/" class="link-main">메인으로</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JS -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.js"></script>
+
+    </body>
+</html>

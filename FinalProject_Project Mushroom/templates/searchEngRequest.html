@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>검색결과:이름</title>
+        <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='favicon/favicon2.ico')}}" />
+        <!-- Font Awesome icons (free version) -->
+        <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap) -->
+        <link href="{{url_for('static', filename='css/styles.css')}}" rel="stylesheet" />
+        <!-- JavaScript -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="{{url_for('static', filename='js/script.js')}}" ></script>
+        <!-- Loading -->
+        <link rel="stylesheet" href="{{url_for('static', filename='css/loading.css')}}"/>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script type='text/javascript'>
+            $(document).ready(function() {
+
+            $('#loading').hide();
+            $('#searchEngRequest').submit(function(){
+                $('#loading').show();
+                return true;
+                });
+            });
+
+           $(function () {
+            $("[data-toggle='tooltip']").tooltip({'placement': 'left'});
+            });
+        </script>
+    </head>
+    <body>
+        <!-- loading page -->
+        <div class="loading" id="loading">
+            <div class="loadingImg"><img src="/static/images/loadingImage.gif" style="width:100px;height:100px;"></div>
+            <h4><span style="color:#FAD496;font-weight:bold">API </span>정보를 로딩 중 입니다...<br><br>
+            잠시 기다려주세요.</h4>
+        </div>
+        <!-- sideMenu -->
+        {% include './sideMenu/sidebar.html' %}
+        <!-- Background Video -->
+        <video class="bg-video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop"><source src="{{url_for('static', filename='mp4/bg3.mp4')}}" type="video/mp4" /></video>
+        <!-- Masthead2 본문 -->
+        <div class="masthead2">
+            <div class="masthead-content text-white">
+                <div class="container-fluid px-4 px-lg-0">
+                    <h2 class="fst-italic lh-1 mb-4">Project Mushroom</h2>
+                    <h4 class="fst-normal lh-1 mb-4"><span style="color:#FAD496">{{sw}}</span> 검색 결과</h4>
+                    <table class="mushroom-table">
+                        <tr class="table-tr">
+                            <th></th>
+                            <th></th>
+                            <th class="th-center">국명</th>
+                            <th class="th-left">학명</th>
+                        </tr>
+                        {% for data in List %}
+                        <tr class="table-tr">
+                            <form name="detail" action="/resource/infoRequest" method="POST">
+                                {% if '불명' in data[4] %}
+                                <td><img src="/static/images/idontKnow.png" width="100" height="100" data-toggle="tooltip" data-placement="left" title="식독 불명"></td>
+                                {% elif '부' in data[4] %}
+                                <td><img src="/static/images/dontEat.png" width="100" height="100" data-toggle="tooltip" data-placement="left" title="식용 부적합"></td>
+                                {% elif '식용' in data[4] %}
+                                <td><img src="/static/images/mushroomSoup.png" width="100" height="100" data-toggle="tooltip" data-placement="left" title="식용 버섯"></td>
+                                {% elif '약' in data[4] %}
+                                <td><img src="/static/images/hurb.png" width="100" height="100" data-toggle="tooltip" data-placement="left" title="약용 버섯"></td>
+                                {% else %}
+                                <td><img src="/static/images/poison1.png" width="100" height="100" data-toggle="tooltip" data-placement="left" title="독버섯"></td>
+                                {% endif %}
+                                <input type="hidden" name="q1" value="{{data[3]}}">
+                                <td><img src="{{data[0]}}" width="225" height="125"></td>
+                                <td class="td-left" style="text-align: center;"><input class="detail" type="submit" value="{{data[1]}}"></td>
+                                <td class="td-left">{{data[2]}}</td>
+                            </form>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    <!-- 페이징 -->
+                    <div class="paging">
+                            <form action="/resource/searchEngRequest" id="searchEngRequest" method="POST">
+                                <input type="hidden" name="st" value="2">
+                                <input type="hidden" name="numOfRows" value="5">
+                                <input type="hidden" name="sw" value={{sw}} >
+                                <input class="paging" type="submit" name="pageNo" value="1">
+                                <input class="paging" type="submit" name="pageNo" value="2">
+                                <input class="paging" type="submit" name="pageNo" value="3">
+                                <input class="paging" type="submit" name="pageNo" value="4">
+                                <input class="paging" type="submit" name="pageNo" value="5">
+                            </form>
+                        </div>
+                    <!-- 되돌아가기 -->
+                    <div style="margin-top:10px;">
+                          <a href="/" class="link-main">메인으로</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.js"></script>
+    </body>
+</html>

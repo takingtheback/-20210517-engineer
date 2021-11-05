@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>이름으로 검색하기</title>
+    <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='favicon/favicon2.ico')}}" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{{url_for('static', filename='css/styles.css')}}" rel="stylesheet" />
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- <script src="{{url_for('static', filename='js/script.js')}}" ></script> -->
+
+    <!-- Loading -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/loading.css')}}"/>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/imgClassifier.css')}}"/>
+
+    <script>
+        $(function () {
+        $("[data-toggle='tooltip']").tooltip({'placement': 'left'});
+        });
+    </script>
+    <title>이미지 속 분류 결과 보기</title>
+</head>
+<body>
+<!-- side menu-->
+{% include './sideMenu/sidebar.html' %}
+
+<!-- Background Video-->
+<video class="bg-video" playsinline="playsinline" preload="none" muted="muted" loop="true" autoplay="true">
+    <source src="{{url_for('static', filename='mp4/bg6.mp4')}}" type="video/mp4" />
+</video>
+<div class="masthead2">
+<!-- imgClassifier_output Content -->
+    <div class="masthead-content text-white">
+    <h3>사진 판별 결과</h3>
+        <div class="imgClassifierOutputContent row">
+        <div class="col">
+            {% if img != None %}
+            <p>판별한 버섯은 {{ res }} 속으로 보입니다.</p>
+            <img class="imgClassifierOutImg" src="{{ url_for('static', filename='uploads/imgClassifier/'+img) }}" />
+            {% else %}
+            <p>불러온 이미지가 없습니다.</p>
+            {% endif %}
+            <p class="displaySpecP">동일한 속의 버섯의 더 많은 정보를 원하시나요?</p>
+            <p id="displaySpecButton">표시하기</a></p>
+        </div>
+        <div class="row">
+        <div id="mushroomSpecRight" class="col">
+            <table class="outputTable table mushroom-table">
+                <thead>
+                <tr>
+                    <th scope="col">사진</th>
+                    <th scope="col">속국명</th>
+                    <th scope="col">속명</th>
+                    <th scope="col">국명</th>
+                </tr>
+                </thead>
+                {% for data in list %}
+                <tr>
+                    <th scope="col" class="modalPhotoView"><p onclick="openModal('{{data[0]}}', '{{data[3]}}')">보기</p></th>
+                    <td>{{data[1]}}</td>
+                    <td>{{data[2]}}</td>
+                    <td>{{data[3]}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        </div>
+        <div id="modal" class="modal">
+            <div class="modal-window">
+                <h4 id="modalTitle"></h4>
+                <img id="modalPhoto" src=""/>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+// 상세 검색 표시하기
+const $displaySpecP0 = document.getElementsByClassName("displaySpecP")[0];
+const $displaySpecButton = document.getElementById("displaySpecButton");
+const $mushroomSpecRight = document.getElementById("mushroomSpecRight");
+
+$displaySpecButton.addEventListener("click", () => {
+    $mushroomSpecRight.style.visibility = "visible";
+    $displaySpecP0.style.visibility = "hidden";
+    $displaySpecButton.style.visibility = "hidden";
+});
+
+const $modal = document.getElementById("modal");
+const $modalTitle = document.getElementById("modalTitle");
+const $modalPhoto = document.getElementById("modalPhoto");
+
+const openModal = (e1, e2) => {
+    $modal.style.display = "flex";
+    $modalTitle.innerHTML = e2;
+    $modalPhoto.src = e1;
+}
+
+$modalPhoto.addEventListener("click", () => {
+    $modal.style.display = "none";
+});
+
+</script>
+<!-- Bootstrap core JS-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.js"></script>
+</html>
